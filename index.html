@@ -483,6 +483,7 @@
             } else if (category === 'design') {
                 if (item.name === "Poster & Banners") div.onclick = () => showFiles("Poster Designs", "pos", 13, "design");
                 else if (item.name === "Logo Designs") div.onclick = () => showFiles("Logo Designs", "logo", 1, "design"); 
+                else if (item.name === "PPT Creation") div.onclick = () => showFiles("PPT Projects", "ppt", 12, "design");
             } else if (category === 'cards') {
                 if (item.name === "Visiting Card Design") div.onclick = () => showFiles("Visiting Card Designs", "vis", 6, "cards");
             } else if (category === 'eservices') {
@@ -555,14 +556,21 @@
     function openFileView(url, title, type) {
         document.getElementById('fileTitle').innerText = title;
         
-        let finalUrl = url;
-        // Logic to handle PPT and PDF via Google Docs Viewer
-        if (type === "ppt" || type === "doc" || type === "r") {
-            // Getting absolute URL for Google Docs Viewer
-            const currentPath = window.location.origin + window.location.pathname;
-            const baseUrl = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
-            const absoluteFileUrl = baseUrl + url;
+        const baseUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+        const absoluteFileUrl = baseUrl + url;
+        let finalUrl = "";
+
+        // PPT-க்கு மட்டும் Google Slides Viewer பயன்படுத்தப்படுகிறது
+        if (type === "ppt") {
+            finalUrl = `https://docs.google.com/presentation/d/e/2PACX-1v/embed?url=${encodeURIComponent(absoluteFileUrl)}`;
+            // மாற்று வழி (ஒருவேளை embed வேலை செய்யவில்லை எனில்):
+            // finalUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteFileUrl)}&embedded=true`;
+        } 
+        // மற்ற ஆவணங்களுக்கு சாதாரண Google Docs Viewer
+        else if (type === "doc" || type === "r") {
             finalUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteFileUrl)}&embedded=true`;
+        } else {
+            finalUrl = url;
         }
         
         document.getElementById('fileFrame').src = finalUrl;
