@@ -3,512 +3,592 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeWave Tech | Digital Solutions</title>
+  <title>CodeWave Tech | Enterprise Digital Solutions</title>
   <link rel="icon" type="image/png" href="finalogo.jpeg">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    @keyframes rotateGlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; overflow-x: hidden; }
+    
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-.rotating-bg {
-  position: absolute;
-  width: 380px;
-  height: 380px;
-  background: conic-gradient(from 0deg, #2563eb, #7c3aed, #2563eb);
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.6;
-  animation: rotateGlow 18s linear infinite;
-  z-index: 0;
-}
-@keyframes textReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-    filter: blur(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
+    .gradient-text { 
+      background: linear-gradient(90deg, #1e40af, #7c3aed, #2563eb, #1e40af);
+      background-size: 300% 100%;
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      animation: gradientFlow 4s linear infinite;
+    }
 
-.text-animate {
-  opacity: 0;
-  animation: textReveal 0.8s ease forwards;
-}
+    .header-glow-wrapper {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 95%;
+      z-index: 100;
+      padding: 2.5px;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      background: #e2e8f0; 
+    }
 
-.delay-1 { animation-delay: 0.3s; }
-.delay-2 { animation-delay: 0.6s; }
-.delay-3 { animation-delay: 0.9s; }
-.delay-4 { animation-delay: 1.2s; }
-@keyframes heroImageEntry {
-  0% {
-    opacity: 0;
-    transform: scale(0.7) rotate(-20deg);
-    filter: blur(10px);
-  }
-  60% {
-    transform: scale(1.05) rotate(5deg);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
+    .header-glow-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+      animation: flowLeftToRight 2s linear infinite;
+    }
 
-.hero-img-animate {
-  opacity: 0;
-  animation: heroImageEntry 1.2s ease forwards;
-  animation-delay: 0.8s;
-}
-/* Hide default cursor */
+    .header-glow-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(270deg, transparent, #7c3aed, transparent);
+      animation: flowRightToLeft 2s linear infinite;
+      animation-delay: 1s;
+    }
 
-.hero-3d {
-  transition: transform 0.2s ease;
-  transform-style: preserve-3d;
-}/* SERVICES ENTRY ANIMATION */
-@keyframes serviceEntry {
-  0% {
-    opacity: 0;
-    transform: translateY(80px) scale(0.9);
-    filter: blur(10px);
-  }
-  60% {
-    transform: translateY(-10px) scale(1.02);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+    @keyframes flowLeftToRight {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
 
-.service-card {
-  opacity: 0;
-  transform: translateY(60px);
-}
+    @keyframes flowRightToLeft {
+      0% { right: -100%; }
+      50% { right: 100%; }
+      100% { right: 100%; }
+    }
 
-/* Hover 3D + Glow */
-.service-card:hover {
-  transform: translateY(-12px) scale(1.04);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.1),
-              0 0 25px rgba(37, 99, 235, 0.25);
-}
-#wa-popup.active {
-  display: block;
-  animation: premiumReveal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
+    .glass { 
+        background: #f8fafc;
+        width: 100%;
+        height: 100%;
+        border-radius: 1.4rem;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(5deg); }
+    }
+    .animate-float { animation: float 4s ease-in-out infinite; }
 
-@keyframes premiumReveal {
-  from { 
-    opacity: 0; 
-    transform: scale(0.5) translateY(40px);
-    filter: blur(10px);
-  }
-  to { 
-    opacity: 1; 
-    transform: scale(1) translateY(0);
-    filter: blur(0);
-  }
-}
+    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 50%;
+        background: #2563eb;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    .nav-link:hover::after { width: 100%; }
 
-/* Glassmorphism subtle effect */
-.backdrop-blur-xl {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-/* Optimized Wave Animation for Large Hand */
-/* Unique 3D Realistic Wave Animation */
-@keyframes unique-wave {
-  0% { transform: rotate(0deg) scale(1) translateY(0); }
-  15% { transform: rotate(18deg) scale(1.1) translateY(-2px); } /* Tilt & Pop */
-  30% { transform: rotate(-12deg) scale(1.1) translateY(-2px); } /* Counter tilt */
-  45% { transform: rotate(18deg) scale(1.1) translateY(-2px); }
-  60% { transform: rotate(-8deg) scale(1.1) translateY(-2px); }
-  75% { transform: rotate(12deg) scale(1.1) translateY(-2px); }
-  100% { transform: rotate(0deg) scale(1) translateY(0); }
-}
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0px rgba(37, 99, 235, 0); transform: scale(1); }
+      50% { box-shadow: 0 0 25px rgba(37, 99, 235, 0.4); transform: scale(1.02); }
+    }
+    .btn-pulse { animation: pulse-glow 3s infinite; }
 
-.unique-3d-hand {
-  display: inline-block;
-  animation: unique-wave 2s infinite ease-in-out;
-  transform-origin: bottom center;
-  /* Adding a subtle 3D lighting effect using filters */
-  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15)) brightness(1.1);
-  will-change: transform;
-}
-
-/* HI! Bubble Animation */
-@keyframes bubble-float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-5px) scale(1.05); }
-}
-
-.absolute.-top-16 div {
-  animation: bubble-float 2s infinite ease-in-out;
-}
-
-@keyframes bounce-subtle {
-  0%, 100% {transform: translateY(0);}
-  50% {transform: translateY(-5px);} /* Subtle movement */
-}
-/* Button bounce animation for attention */
-.animate-bounce {
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-  40% {transform: translateY(-10px);}
-  60% {transform: translateY(-5px);}
-}
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfd; }
-    .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #db2777 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
-    @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(2deg); } }
-    .animate-float { animation: float 6s ease-in-out infinite; }
+    .wave-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; overflow: hidden; }
+    
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
-    .btn-glow:hover { box-shadow: 0 0 20px rgba(37, 99, 235, 0.4); }
     
-    /* Modal Styles */
-    .modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
-    .modal.active { display: flex; }
+    .service-card { transition: all 0.4s ease; border: 1px solid rgba(226, 232, 240, 1); background: white; overflow: hidden; }
+    .service-card:hover { transform: translateY(-12px); border-color: #3b82f6; box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.1); }
+    
+    .service-img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s ease; }
+    .service-card:hover .service-img { transform: scale(1.1); }
+
+    .btn-corporate { position: relative; overflow: hidden; transition: all 0.3s ease; }
+    .btn-corporate:hover { transform: scale(1.02); filter: brightness(1.1); }
+
+    .modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
+    .modal.active { display: flex; animation: fadeIn 0.3s ease; }
+
+    /* File View Popup Styles */
+    #fileViewModal { display: none; position: fixed; inset: 0; z-index: 400; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 20px; }
+    #fileViewModal.active { display: flex; }
+    .file-container { background: white; width: 90%; height: 90%; border-radius: 1.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .file-header { padding: 15px 25px; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+
+    #imagePopupModal { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
+    #imagePopupModal.active { display: flex; }
+    .popup-content { max-width: 90%; max-height: 90%; border-radius: 1rem; border: 4px solid white; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   </style>
 </head>
 
 <body class="text-slate-900 antialiased">
-  <div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
+  
+  <div class="header-glow-wrapper">
+    <header class="glass px-6 md:px-10 h-20 flex items-center">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="p-2 bg-white rounded-2xl shadow-sm border border-slate-100 animate-float">
+                    <img src="finalogo.jpeg" class="w-8 h-8 object-contain" alt="CodeWave">
+                </div>
+                <h1 class="text-xl font-extrabold tracking-tight text-slate-900">Code<span class="gradient-text">Wave</span></h1>
+            </div>
 
-
-  <header class="fixed w-full top-0 z-[100] px-4 md:px-10 h-20 flex items-center transition-all duration-300 glass border-b border-slate-200/50">
-    <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-      <div class="flex items-center gap-3 group cursor-pointer">
-        <div class="p-1.5 bg-white rounded-xl shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
-          <img src="finalogo.jpeg" class="w-8 h-8 object-contain" alt="CodeWave">
+            <nav class="hidden md:flex items-center gap-8 font-bold text-sm text-slate-600">
+                <a href="#" class="nav-link hover:text-blue-600">Home</a>
+                <a href="#services" class="nav-link hover:text-blue-600">Services</a>
+                <a href="#works" class="nav-link hover:text-blue-600">Our Works</a>
+                <a href="#about" class="nav-link hover:text-blue-600">About</a>
+                <a href="#contact" class="nav-link hover:text-blue-600">Contact</a>
+                <div class="ml-2">
+                    <a href="#contact" class="bg-slate-900 text-white px-8 py-3 rounded-2xl text-sm hover:bg-blue-600 transition-all btn-corporate btn-pulse inline-block shadow-lg">
+                        Get Started
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="md:hidden text-2xl text-slate-900">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
         </div>
-        <h1 class="text-xl font-extrabold tracking-tight text-slate-900">Code<span class="gradient-text">Wave</span></h1>
-      </div>
-      <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-600">
-        <a href="#" class="hover:text-blue-600 transition-colors">Home</a>
-        <a href="#services" class="hover:text-blue-600 transition-colors">Services</a>
-        <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
-        <a href="#contact" class="bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm hover:bg-blue-600 transition-all btn-glow shadow-lg shadow-blue-500/10">Get Quote</a>
-      </nav>
-      <button id="menuBtn" class="md:hidden p-2 text-slate-800">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-      </button>
-    </div>
-  </header>
+    </header>
+  </div>
 
-  <section class="min-h-screen flex items-center pt-24 pb-12 px-6 relative overflow-hidden">
-    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-400/10 blur-[120px] rounded-full"></div>
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
-      <div class="text-center lg:text-left">
-       <h2 class="text-4xl md:text-7xl font-[800] leading-[1.1] text-slate-900 mb-6">
-  <span class="block text-animate delay-1">Build Your</span>
-  <span class="block text-animate delay-2">Digital Future with</span>
-  <span class="block gradient-text text-animate delay-3">CodeWave Tech</span>
-</h2>
-        <p class="text-slate-500 text-lg md:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed text-animate delay-4">
-  Making technology easy and useful for everyone. We provide digital solutions for students, startups, and businesses.
-</p>
-       <div class="flex flex-wrap gap-4 justify-center lg:justify-start text-animate delay-4">
-  <a href="#contact" class="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl">
-    Start Your Journey 🚀
-  </a>
-</div>
-      </div>
-      <div class="relative flex justify-center items-center">
-        <div class="rotating-bg"></div>
-       <img src="image.png" class="hero-3d w-full max-w-lg relative z-10 hero-img-animate drop-shadow-[0_35px_35px_rgba(0,0,0,0.1)]" alt="Hero">
+  <section class="min-h-screen flex items-center pt-32 pb-20 px-6 relative overflow-hidden bg-white">
+    <div class="wave-bg">
+      <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-50 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-purple-50 rounded-full blur-[100px]"></div>
+    </div>
+    
+    <div class="max-w-5xl mx-auto text-center relative z-10 reveal">
+      <span class="inline-block px-5 py-2 mb-8 text-xs font-bold tracking-[0.2em] text-blue-600 uppercase bg-blue-50 rounded-full">Future-Proof Digital Excellence</span>
+      <h2 class="text-5xl md:text-8xl font-[900] leading-[1] text-slate-900 mb-8 tracking-tight">
+        Elevating Ideas Into <br/><span class="gradient-text italic">Powerful Reality.</span>
+      </h2>
+      <p class="text-slate-500 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+        CodeWave Tech is a premium digital agency providing high-end Web Development, Academic Solutions, and Branding for the modern era.
+      </p>
+      <div class="flex flex-wrap gap-6 justify-center">
+        <a href="#services" class="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-2xl hover:shadow-blue-500/30 btn-corporate">Explore Services</a>
+        <a href="#contact" class="px-10 py-5 bg-white text-slate-900 border-2 border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all">Contact Expert</a>
       </div>
     </div>
   </section>
 
-
-
-
-  <section id="services" class="pt-24 pb-12 px-6 bg-slate-50/50 relative overflow-hidden">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-20">
-      <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">Solutions Crafted for Excellence</h2>
-      <div class="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
-      <div class="service-card glass p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl transition-all duration-500 group cursor-pointer" onclick="openPriceModal('Web Development')">
-        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 border border-blue-100 group-hover:bg-blue-600 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-        </div>
-        <h4 class="text-2xl font-bold mb-4 text-slate-900">Web Development</h4>
-        <p class="text-slate-500 leading-relaxed">Frontend, Business, and E-Commerce websites built for your growth.</p>
+  <!-- SERVICES SECTION -->
+  <section id="services" class="py-32 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-24 reveal">
+        <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">Tailored Solutions</h2>
+        <p class="text-slate-500 font-medium">Precision engineering for your digital needs.</p>
       </div>
 
-      <div class="service-card glass p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl transition-all duration-500 group cursor-pointer" onclick="openPriceModal('Academic Works')">
-        <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-8 border border-emerald-100 group-hover:bg-emerald-600 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-emerald-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="reveal service-card rounded-[3rem] group">
+          <img src="web1.jpg" alt="Web Development" class="service-img">
+          <div class="p-10">
+            <h4 class="text-2xl font-black mb-4 text-slate-900">Web Systems</h4>
+            <p class="text-slate-500 mb-10 leading-relaxed">Scalable architecture for E-Commerce, Frontend, and Enterprise platforms.</p>
+            <button onclick="openPriceModal('web')" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all btn-corporate shadow-xl shadow-blue-500/10">View Options</button>
+          </div>
         </div>
-        <h4 class="text-2xl font-bold mb-4 text-slate-900">Academic Works</h4>
-        <p class="text-slate-500 leading-relaxed">Mini/Final year projects, documentation, and professional PPTs.</p>
-      </div>
 
-      <div class="service-card glass p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl transition-all duration-500 group cursor-pointer" onclick="openPriceModal('Education Services')">
-        <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mb-8 border border-amber-100 group-hover:bg-amber-600 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <div class="reveal service-card rounded-[3rem] group">
+          <img src="aca1.jpg" alt="Academic Support" class="service-img">
+          <div class="p-10">
+            <h4 class="text-2xl font-black mb-4 text-slate-900">Academic Support</h4>
+            <p class="text-slate-500 mb-10 leading-relaxed">Projects, Notes, and ATS Resume creation for career success.</p>
+            <button onclick="openPriceModal('academic')" class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold hover:bg-emerald-700 transition-all btn-corporate shadow-xl shadow-emerald-500/10">View Options</button>
+          </div>
         </div>
-        <h4 class="text-2xl font-bold mb-4 text-slate-900">Education Services</h4>
-        <p class="text-slate-500 leading-relaxed">Expert support for College and Exam applications.</p>
-      </div>
 
-      <div class="service-card glass p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl transition-all duration-500 group cursor-pointer" onclick="openPriceModal('Designing')">
-        <div class="w-16 h-16 bg-rose-50 rounded-2xl flex items-center justify-center mb-8 border border-rose-100 group-hover:bg-rose-600 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-rose-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.5 1.5"></path><path d="M7 11l5-5"></path></svg>
+        <div class="reveal service-card rounded-[3rem] group">
+          <img src="vb1.jpg" alt="Visual Branding" class="service-img">
+          <div class="p-10">
+            <h4 class="text-2xl font-black mb-4 text-slate-900">Visual Branding</h4>
+            <p class="text-slate-500 mb-10 leading-relaxed">Premium Logos, Corporate Identity, and Marketing Designs.</p>
+            <button onclick="openPriceModal('design')" class="w-full py-4 bg-amber-500 text-white rounded-2xl font-bold hover:bg-amber-600 transition-all btn-corporate shadow-xl shadow-amber-500/10">View Options</button>
+          </div>
         </div>
-        <h4 class="text-2xl font-bold mb-4 text-slate-900">Designing</h4>
-        <p class="text-slate-500 leading-relaxed">Professional Logos, Posters, and Banners for your brand.</p>
-      </div>
-
-      <div class="service-card glass p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl transition-all duration-500 group cursor-pointer" onclick="openPriceModal('Student Support')">
-        <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-8 border border-indigo-100 group-hover:bg-indigo-600 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        
+        <div class="reveal service-card rounded-[3rem] group">
+          <img src="ad1.jpg" alt="Ad Creation" class="service-img">
+          <div class="p-10">
+            <h4 class="text-2xl font-black mb-4 text-slate-900">Ad Creation</h4>
+            <p class="text-slate-500 mb-10 leading-relaxed">Professional Advertisement designs and management for your business growth.</p>
+            <button onclick="openPriceModal('ads')" class="w-full py-4 bg-rose-600 text-white rounded-2xl font-bold hover:bg-rose-700 transition-all btn-corporate shadow-xl shadow-rose-500/10">View Options</button>
+          </div>
         </div>
-        <h4 class="text-2xl font-bold mb-4 text-slate-900">Student Support</h4>
-        <p class="text-slate-500 leading-relaxed">ATS Resume, Portfolios, and E-Services for students.</p>
-      </div>
 
-      <div class="service-card glass p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl transition-all duration-500 group cursor-pointer" onclick="openPriceModal('Study Materials')">
-        <div class="w-16 h-16 bg-violet-50 rounded-2xl flex items-center justify-center mb-8 border border-violet-100 group-hover:bg-violet-600 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-violet-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <div class="reveal service-card rounded-[3rem] group">
+          <img src="e1.jpg" alt="E-Services" class="service-img">
+          <div class="p-10">
+            <h4 class="text-2xl font-black mb-4 text-slate-900">E-Services</h4>
+            <p class="text-slate-500 mb-10 leading-relaxed">Fast processing for Online Applications and essential Digital E-Services.</p>
+            <button onclick="openPriceModal('eservices')" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all btn-corporate shadow-xl shadow-indigo-500/10">View Options</button>
+          </div>
         </div>
-        <h4 class="text-2xl font-bold mb-4 text-slate-900">Study Materials</h4>
-        <p class="text-slate-500 leading-relaxed">Comprehensive notes per subject and full package options.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
- <section id="contact" class="py-16 px-4 md:px-6">
-  <div class="max-w-5xl mx-auto glass rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-20 relative overflow-hidden border border-white shadow-2xl">
-    
-    <div class="absolute top-0 right-0 p-12 hidden md:block">
-      <div class="w-64 h-64 bg-blue-600/5 rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="relative z-10 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-      <div class="text-center md:text-left">
-        <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
-          Ready to <span class="gradient-text">Level Up?</span>
-        </h2>
-        <div class="space-y-4 md:space-y-6 flex flex-col items-center md:items-start">
-          <a href="mailto:codewavetech23@gmail.com" class="flex items-center gap-4 group w-fit">
-            <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all text-lg md:text-xl">📧</div>
-            <span class="font-bold text-slate-700 text-sm md:text-base">codewavetech23@gmail.com</span>
-          </a>
-          <a href="https://wa.me/919344589302" class="flex items-center gap-4 group w-fit">
-            <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-green-50 flex items-center justify-center group-hover:bg-green-600 group-hover:text-white transition-all text-lg md:text-xl text-green-600">💬</div>
-            <span class="font-bold text-slate-700 text-sm md:text-base">+91 93445 89302</span>
-          </a>
+        <div class="reveal service-card rounded-[3rem] group">
+          <img src="vc.jpg" alt="Visiting Cards" class="service-img">
+          <div class="p-10">
+            <h4 class="text-2xl font-black mb-4 text-slate-900">Visiting Cards</h4>
+            <p class="text-slate-500 mb-10 leading-relaxed">Corporate Visiting Card designs and professional identity branding.</p>
+            <button onclick="openPriceModal('cards')" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all btn-corporate shadow-xl shadow-blue-500/10">View Options</button>
+          </div>
         </div>
-      </div>
-
-      <div class="bg-slate-900 p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] text-white text-center shadow-xl">
-        <p class="text-blue-400 font-bold mb-2 md:mb-4 text-sm uppercase tracking-wider">Fast Response Guaranteed</p>
-        <h3 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">We usually respond within 2 hours</h3>
-        <a href="https://wa.me/919344589302" class="block w-full py-3 md:py-4 bg-white text-slate-900 rounded-xl font-bold hover:bg-blue-50 transition-all hover:scale-[1.02] active:scale-95">
-          Chat on WhatsApp
-        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- WORKS SECTION -->
+  <section id="works" class="py-32 px-6 bg-slate-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-24 reveal">
+        <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">Our Works</h2>
+        <p class="text-slate-500 font-medium">Browse through our service catalog and price details.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="reveal service-card rounded-[3rem] group">
+          <img src="web2.jpg" alt="Web Development Work" class="service-img">
+          <div class="p-10">
+            <h4 class="text-2xl font-black mb-4 text-slate-900">Web Systems</h4>
+            <p class="text-slate-500 mb-10 leading-relaxed">Scalable architecture for E-Commerce, Frontend, and Enterprise platforms.</p>
+            <button onclick="openPriceModal('web', true)" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all btn-corporate shadow-xl shadow-blue-500/10">View More</button>
+          </div>
+        </div>
+
+        <div class="reveal service-card rounded-[3rem] group">
+          <img src="aca2.jpg" alt="Academic Support Work" class="service-img">
+          <div class="p-10">
+            <h4 class="text-2xl font-black mb-4 text-slate-900">Academic Support</h4>
+            <p class="text-slate-500 mb-10 leading-relaxed">Projects, Notes, and ATS Resume creation for career success.</p>
+            <button onclick="openPriceModal('academic', true)" class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold hover:bg-emerald-700 transition-all btn-corporate shadow-xl shadow-emerald-500/10">View More</button>
+          </div>
+        </div>
+
+        <div class="reveal service-card rounded-[3rem] group">
+          <img src="vb2.jpg" alt="Visual Branding Work" class="service-img">
+          <div class="p-10">
+            <h4 class="text-2xl font-black mb-4 text-slate-900">Visual Branding</h4>
+            <p class="text-slate-500 mb-10 leading-relaxed">Premium Logos, Corporate Identity, and Marketing Designs.</p>
+            <button onclick="openPriceModal('design', true)" class="w-full py-4 bg-amber-500 text-white rounded-2xl font-bold hover:bg-amber-600 transition-all btn-corporate shadow-xl shadow-amber-500/10">View More</button>
+          </div>
+        </div>
+        
+        <div class="reveal service-card rounded-[3rem] group">
+            <img src="ad2.jpg" alt="Ad Creation Work" class="service-img">
+            <div class="p-10">
+              <h4 class="text-2xl font-black mb-4 text-slate-900">Ad Creation</h4>
+              <p class="text-slate-500 mb-10 leading-relaxed">Professional Advertisement designs and management for your business growth.</p>
+              <button onclick="openPriceModal('ads', true)" class="w-full py-4 bg-rose-600 text-white rounded-2xl font-bold hover:bg-rose-700 transition-all btn-corporate shadow-xl shadow-rose-500/10">View More</button>
+            </div>
+          </div>
+  
+          <div class="reveal service-card rounded-[3rem] group">
+            <img src="e2.jpg" alt="E-Services Work" class="service-img">
+            <div class="p-10">
+              <h4 class="text-2xl font-black mb-4 text-slate-900">E-Services</h4>
+              <p class="text-slate-500 mb-10 leading-relaxed">Fast processing for Online Applications and essential Digital E-Services.</p>
+              <button onclick="openPriceModal('eservices', true)" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all btn-corporate shadow-xl shadow-indigo-500/10">View More</button>
+            </div>
+          </div>
+  
+          <div class="reveal service-card rounded-[3rem] group">
+            <img src="vc2.jpg" alt="Visiting Cards Work" class="service-img">
+            <div class="p-10">
+              <h4 class="text-2xl font-black mb-4 text-slate-900">Visiting Cards</h4>
+              <p class="text-slate-500 mb-10 leading-relaxed">Corporate Visiting Card designs and professional identity branding.</p>
+              <button onclick="openPriceModal('cards', true)" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all btn-corporate shadow-xl shadow-blue-500/10">View More</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-32 px-6">
+    <div class="max-w-6xl mx-auto glass rounded-[4rem] p-12 md:p-24 shadow-2xl relative overflow-hidden">
+      <div class="relative z-10 grid md:grid-cols-2 gap-20 items-center">
+        <div class="reveal">
+          <h2 class="text-5xl font-black text-slate-900 mb-8 tracking-tighter">Ready to <span class="gradient-text">Wave?</span></h2>
+          <p class="text-slate-500 text-lg mb-12 font-medium">Build your digital future with CodeWave Tech.</p>
+          <div class="space-y-6">
+            <div class="flex items-center gap-6 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
+              <span class="text-3xl">📧</span>
+              <div>
+                <p class="text-xs font-bold text-slate-400 uppercase">Mail us at</p>
+                <p class="font-bold text-slate-800">codewavetech23@gmail.com</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-6 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                <span class="text-3xl">💬</span>
+                <div>
+                  <p class="text-xs font-bold text-slate-400 uppercase">WhatsApp Support</p>
+                  <p class="font-bold text-slate-800">+91 93426 05824</p>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="bg-slate-900 p-12 rounded-[3rem] text-white reveal shadow-2xl">
+          <h3 class="text-2xl font-bold mb-4">Instant Chat</h3>
+          <p class="text-slate-400 mb-10 text-sm">Start your journey with us on WhatsApp.</p>
+          <a href="https://wa.me/919342605824" class="block w-full py-5 bg-blue-600 text-white rounded-2xl font-black text-center hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20">Chat Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white py-20 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+        <img src="finalogo.jpeg" class="w-16 h-16 mx-auto mb-6 rounded-2xl" alt="Logo">
+        <h2 class="text-3xl font-black mb-4 tracking-tighter">Code<span class="text-blue-500">Wave</span> Tech</h2>
+        <p class="text-slate-400 mb-10 max-w-lg mx-auto">Empowering digital evolution through high-performance software and expert academic support.</p>
+        <div class="flex justify-center gap-6 mb-12">
+            <a href="https://www.instagram.com/codewave_tech_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com/company/115134187/" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@CODEWAVE_TECH" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="text-slate-600 text-sm font-bold tracking-widest uppercase">© 2026 CodeWave Tech. Precision Engineering.</p>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
   <div id="priceModal" class="modal px-4">
-    <div class="bg-white w-full max-w-xl rounded-3xl p-8 shadow-2xl relative">
-      <button onclick="closeModal('priceModal')" class="absolute top-6 right-6 text-2xl text-slate-400">&times;</button>
-      <h3 id="modalTitle" class="text-2xl font-bold mb-6 text-slate-900 text-center">Select a Service</h3>
-      <div id="priceListContainer" class="space-y-3 mb-4"></div>
-      <p class="text-xs text-slate-400 text-center">Click on a service above to continue</p>
+    <div class="bg-white w-full max-w-xl rounded-[3rem] p-12 shadow-2xl relative max-h-[85vh] overflow-y-auto">
+      <button onclick="closeModal('priceModal')" class="absolute top-10 right-10 text-3xl text-slate-300 hover:text-slate-900">&times;</button>
+      <h3 id="modalTitle" class="text-3xl font-black mb-10 text-slate-900 text-center italic">Service Pricing</h3>
+      <div id="priceListContainer" class="space-y-4"></div>
     </div>
+  </div>
+
+  <!-- New File Viewer Modal -->
+  <div id="fileViewModal">
+    <div class="file-container">
+        <div class="file-header">
+            <h4 id="fileTitle" class="font-bold text-slate-800">File Viewer</h4>
+            <button onclick="closeFileView()" class="text-2xl font-bold text-slate-500 hover:text-red-500">Back</button>
+        </div>
+        <iframe id="fileFrame" class="w-full h-full border-none"></iframe>
+    </div>
+  </div>
+
+  <div id="imagePopupModal" onclick="closeImagePopup()">
+    <img id="popupImage" src="" class="popup-content" onclick="event.stopPropagation()">
   </div>
 
   <div id="enquiryModal" class="modal px-4">
-    <div class="bg-white w-full max-w-lg rounded-3xl p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-      <button onclick="closeModal('enquiryModal')" class="absolute top-6 right-6 text-2xl text-slate-400">&times;</button>
-      <h3 class="text-2xl font-bold mb-2">Order Enquiry</h3>
-      <p id="selectedServiceDisplay" class="text-blue-600 font-semibold mb-6"></p>
+    <div class="bg-white w-full max-w-lg rounded-[3rem] p-12 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal('enquiryModal')" class="absolute top-10 right-10 text-3xl text-slate-300 hover:text-slate-900">&times;</button>
+      <h3 class="text-2xl font-black mb-8">Order Specification</h3>
       <form id="orderForm" class="space-y-4">
         <input type="hidden" id="serviceNameInput" name="service_name">
-        
-        <input type="text" name="user_name" placeholder="Full Name" required class="w-full px-4 py-3 rounded-xl border outline-none focus:border-blue-500">
-        <input type="email" name="user_email" placeholder="Email ID" required class="w-full px-4 py-3 rounded-xl border outline-none focus:border-blue-500">
-        <div class="grid grid-cols-2 gap-4">
-          <input type="tel" name="user_phone" placeholder="Phone Number" required class="w-full px-4 py-3 rounded-xl border outline-none focus:border-blue-500">
-          <input type="tel" name="user_whatsapp" placeholder="WhatsApp Number" required class="w-full px-4 py-3 rounded-xl border outline-none focus:border-blue-500">
-        </div>
-        <textarea name="user_address" rows="2" placeholder="Your Address" required class="w-full px-4 py-3 rounded-xl border outline-none focus:border-blue-500"></textarea>
-        <textarea name="message" rows="3" placeholder="Explain your requirements..." required class="w-full px-4 py-3 rounded-xl border outline-none focus:border-blue-500"></textarea>
-        <button type="submit" id="submitBtn" class="w-full py-4 bg-blue-600 text-white rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-all">Submit Order</button>
+        <input type="text" placeholder="Full Name" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+        <input type="email" placeholder="Email" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+        <input type="tel" placeholder="WhatsApp Number" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+        <textarea rows="4" placeholder="Briefly describe your requirements..." required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all"></textarea>
+        <button type="submit" class="w-full py-5 bg-slate-900 text-white rounded-2xl font-black hover:bg-blue-600 shadow-xl transition-all">Submit Order</button>
       </form>
     </div>
   </div>
 
-  <footer class="bg-slate-950 text-slate-400 py-16 px-6 border-t border-slate-900">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-      <div class="flex items-center gap-3">
-        <div class="p-1.5 bg-white rounded-lg"><img src="finalogo.jpeg" class="w-6 h-6 object-contain" alt="Logo"></div>
-        <span class="text-white font-bold text-xl tracking-tight">CodeWave</span>
-      </div>
-      <p class="text-sm">© 2026 CodeWave Tech. All rights reserved.</p>
-      <div class="flex gap-6 text-sm font-semibold">
-        <a href="https://youtube.com/@codewave_tech" target="_blank" class="hover:text-white transition-colors">YouTube</a>
-        <a href="https://www.linkedin.com/company/codewave-tech-company/" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
-        <a href="https://www.instagram.com/codewave_tech_" target="_blank" class="hover:text-white transition-colors">Instagram</a>
-      </div>
-    </div>
-  </footer>
-<div id="wa-widget" class="fixed bottom-6 right-6 z-[1000] flex flex-col items-end gap-3">
-  <div id="wa-popup" class="hidden w-[340px] bg-white/90 backdrop-blur-xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white/50 overflow-hidden transition-all duration-500 ease-in-out origin-bottom-right">
-    <div class="bg-gradient-to-r from-[#25D366] to-[#128C7E] p-7 text-white">
-      <div class="flex items-center gap-4">
-        <div class="relative">
-          <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg">
-            <img src="finalogo.jpeg" class="w-10 h-10 object-contain" alt="Logo">
-          </div>
-          <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 border-2 border-white rounded-full animate-pulse"></span>
-        </div>
-        <div>
-          <h4 class="font-extrabold text-lg tracking-tight">CodeWave Tech</h4>
-          <p class="text-xs opacity-90 font-medium flex items-center gap-1">
-            <span class="w-1.5 h-1.5 bg-white rounded-full"></span> Typically replies in 2h
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="p-6 space-y-4 bg-slate-50/50">
-      <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100">
-        <p class="text-sm text-slate-600 leading-relaxed">
-          Hey there! 👋 <br>
-          Looking for a website or academic project? Let's discuss your requirements!
-        </p>
-      </div>
-    </div>
-
-    <div class="p-6 pt-0 bg-slate-50/50">
-      <a href="https://wa.me/919344589302?text=Hi CodeWave Tech! I want to enquiry about your services." 
-         target="_blank" 
-         class="flex items-center justify-center gap-2 w-full py-4 bg-[#25D366] text-white rounded-2xl font-bold hover:bg-[#20ba59] hover:shadow-[0_10px_20px_rgba(37,211,102,0.3)] hover:-translate-y-1 transition-all duration-300">
-        <span>Start Conversation</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-      </a>
-    </div>
-  </div>
-
- <button onclick="toggleWaPopup()" class="group relative w-16 h-16 bg-[#25D366] rounded-[1.5rem] shadow-[0_15px_30px_rgba(37,211,102,0.4)] flex items-center justify-center hover:rotate-12 transition-all duration-500">
-  <div class="absolute inset-0 bg-[#25D366] rounded-[1.5rem] animate-ping opacity-20 group-hover:hidden"></div>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 16 16" class="relative z-10">
-    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326z"/>
-  </svg>
-</button>
-</div>
-<script>
-    const servicesData = {
-      "Web Development": [{ name: "E-Commerce", price: "₹12,599" }, { name: "Business", price: "₹7,599" }, { name: "Frontend", price: "₹2,599" }],
-      "Academic Works": [{ name: "Final Year Project", price: "₹2,499" }, { name: "Mini Projects", price: "₹999" }, { name: "PPT Creation", price: "₹249" }],
-      "Education Services": [{ name: "Full Package", price: "₹499" }],
-      "Designing": [{ name: "Logo Designs", price: "₹99" }, { name: "Posters", price: "₹99" }],
-      "Student Support": [{ name: "ATS Resume", price: "₹199" }, { name: "Digital Portfolio", price: "₹1,499" }],
-      "Study Materials": [{ name: "Notes Per Subject", price: "₹99" }]
+  <script>
+    const priceData = {
+      web: { 
+        title: "Web Solutions", 
+        items: [
+            { name: "E-Commerce Website", price: "₹12,599" }, 
+            { name: "Business Website", price: "₹7,599" }, 
+            { name: "Frontend Website", price: "₹2,599" }
+        ] 
+      },
+      academic: { 
+        title: "Academic Help", 
+        items: [
+            { name: "Final Year Project", price: "₹2,499" }, 
+            { name: "Mini Projects", price: "₹999" }, 
+            { name: "Documentations", price: "₹899" },
+            { name: "ATS Resume Creation", price: "₹29" },
+            { name: "PPT Creation", price: "₹249" },
+            { name: "Full Package (All Subjects)", price: "₹499" },
+            { name: "Notes Per Subject", price: "₹99" }
+        ] 
+      },
+      design: { 
+        title: "Branding & Design", 
+        items: [
+            { name: "PPT Creation", price: "₹249" }, 
+            { name: "Poster & Banners", price: "₹99" },
+            { name: "Logo Designs", price: "₹99" }
+        ] 
+      },
+      ads: {
+        title: "Ad Creation",
+        items: [
+            { name: "Ad Design & Management", price: "₹249" }
+        ]
+      },
+      eservices: {
+        title: "E-Services",
+        items: [
+            { name: "Online Application", price: "₹49" },
+            { name: "Digital E-Services", price: "₹89" }
+        ]
+      },
+      cards: {
+        title: "Visiting Cards",
+        items: [
+            { name: "Visiting Card Design", price: "₹99" }
+        ]
+      }
     };
 
-    function openPriceModal(category) {
-      const modal = document.getElementById('priceModal');
+    function openPriceModal(category, isWorkSection = false) {
+      const data = priceData[category];
+      document.getElementById('modalTitle').innerText = data.title;
       const container = document.getElementById('priceListContainer');
-      document.getElementById('modalTitle').innerText = category;
-      container.innerHTML = ''; 
-      servicesData[category].forEach(s => {
+      container.innerHTML = "";
+      
+      data.items.forEach(item => {
         const div = document.createElement('div');
-        div.className = "flex justify-between p-4 bg-slate-50 rounded-2xl cursor-pointer hover:bg-blue-50 border border-slate-100";
-        div.onclick = () => openEnquiry(s.name, s.price);
-        div.innerHTML = `<b>${s.name}</b><span class="text-blue-600 font-bold">${s.price}</span>`;
+        div.className = "flex justify-between items-center p-6 bg-slate-50 rounded-2xl hover:bg-blue-600 hover:text-white transition-all cursor-pointer group";
+        div.innerHTML = `<span class="font-black">${item.name}</span><span class="font-black bg-white text-blue-600 px-4 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white">${item.price}</span>`;
+        
+        if (isWorkSection) {
+            if (category === 'academic') {
+                if (item.name === "PPT Creation") div.onclick = () => showFiles("PPT Projects", "ppt", 12, "academic");
+                else if (item.name === "Documentations") div.onclick = () => showFiles("Documentation Projects", "doc", 5, "academic");
+                else if (item.name === "ATS Resume Creation") div.onclick = () => showFiles("ATS Resumes", "r", 5, "academic");
+            } else if (category === 'design') {
+                if (item.name === "Poster & Banners") div.onclick = () => showFiles("Poster Designs", "pos", 13, "design");
+                else if (item.name === "Logo Designs") div.onclick = () => showFiles("Logo Designs", "logo", 1, "design"); 
+            } else if (category === 'cards') {
+                // Modified for Visiting Cards in Work Section
+                if (item.name === "Visiting Card Design") div.onclick = () => showFiles("Visiting Card Designs", "vis", 6, "cards");
+            }
+        } else {
+            div.onclick = () => openEnquiryModal(item.name);
+        }
+        
         container.appendChild(div);
       });
+      document.getElementById('priceModal').classList.add('active');
+    }
+
+    function showFiles(title, prefix, count, category) {
+      document.getElementById('modalTitle').innerText = title;
+      const container = document.getElementById('priceListContainer');
+      container.innerHTML = "";
+      
+      let extension = ".jpeg";
+      if (prefix === "ppt") extension = ".pptx";
+      else if (prefix === "doc" || prefix === "r") extension = ".pdf";
+      
+      for (let i = 1; i <= count; i++) {
+        const fileName = `${prefix}${i}${extension}`;
+        const div = document.createElement('div');
+        div.className = "flex justify-between items-center p-6 bg-slate-50 rounded-2xl hover:bg-blue-600 hover:text-white transition-all cursor-pointer group";
+        
+        let icon = "🖼️";
+        let displayName = fileName;
+
+        if (prefix === "ppt") {
+            icon = "📊";
+            displayName = `PPT ${i}`;
+        } else if (prefix === "doc") {
+            icon = "📄";
+            displayName = `Documentation ${i}`;
+        } else if (prefix === "pos") {
+            displayName = `Poster ${i}`;
+        } else if (prefix === "r") {
+            icon = "👤";
+            displayName = `Resume ${i}`;
+        } else if (prefix === "vis") {
+            displayName = `Visiting Card ${i}`;
+        }
+
+        div.innerHTML = `<span class="font-black">${icon} ${displayName}</span><span class="font-black bg-white text-blue-600 px-4 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white">View</span>`;
+        
+        div.onclick = () => { 
+          if(prefix === "pos" || prefix === "logo" || prefix === "vis") {
+            openImagePopup(fileName);
+          } else {
+            openFileView(fileName, displayName, prefix);
+          }
+        };
+        container.appendChild(div);
+      }
+      
+      const backBtn = document.createElement('button');
+      backBtn.className = "w-full mt-6 py-4 bg-slate-900 text-white rounded-2xl font-bold";
+      backBtn.innerText = "Back to Options";
+      backBtn.onclick = () => openPriceModal(category, true);
+      container.appendChild(backBtn);
+    }
+
+    function openFileView(url, title, type) {
+        document.getElementById('fileTitle').innerText = title;
+        
+        let finalUrl = url;
+        if (type === "ppt" || type === "doc" || type === "r") {
+            const absoluteUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1) + url;
+            finalUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteUrl)}&embedded=true`;
+        }
+        
+        document.getElementById('fileFrame').src = finalUrl;
+        document.getElementById('fileViewModal').classList.add('active');
+    }
+
+    function closeFileView() {
+        document.getElementById('fileViewModal').classList.remove('active');
+        document.getElementById('fileFrame').src = "";
+    }
+
+    function openImagePopup(src) {
+      const modal = document.getElementById('imagePopupModal');
+      const img = document.getElementById('popupImage');
+      img.src = src;
       modal.classList.add('active');
     }
 
-    function openEnquiry(name, price) {
+    function closeImagePopup() {
+      document.getElementById('imagePopupModal').classList.remove('active');
+    }
+
+    function openEnquiryModal(service) {
       closeModal('priceModal');
-      document.getElementById('selectedServiceDisplay').innerText = `${name} (${price})`;
-      document.getElementById('serviceNameInput').value = `${name} (${price})`;
       document.getElementById('enquiryModal').classList.add('active');
+      document.getElementById('serviceNameInput').value = service;
     }
 
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
-    // ================= WHATSAPP LOGIC =================
-    // ================= WHATSAPP LOGIC (WITHOUT STARS) =================
-document.getElementById('orderForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const fd = new FormData(this);
-  const service = document.getElementById('serviceNameInput').value;
-  
-  // Inga irunthu namba stars-ah remove pannitom
-  const msg = `New Order: CodeWave Tech%0A%0A` +
-              `Service: ${service}%0A` +
-              `Name: ${fd.get('user_name')}%0A` +
-              `Email: ${fd.get('user_email')}%0A` +
-              `Phone: ${fd.get('user_phone')}%0A` +
-              `WhatsApp: ${fd.get('user_whatsapp')}%0A` +
-              `Address: ${fd.get('user_address')}%0A` +
-              `Details: ${fd.get('message')}`;
-
-  window.open(`https://wa.me/919344589302?text=${msg}`, '_blank');
-  this.reset();
-  closeModal('enquiryModal');
-});
-
-    // ================= CURSOR & ANIMATION =================
-    
-
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.service-card').forEach((c, i) => {
-            setTimeout(() => c.style.animation = `serviceEntry 0.8s ease forwards`, i * 150);
-          });
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
-    observer.observe(document.getElementById('services-grid'));
-
-    window.onclick = (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); };
-
-    function toggleWaPopup() {
-  const popup = document.getElementById('wa-popup');
-  popup.classList.toggle('active');
-  popup.classList.toggle('hidden');
-}
-
-// Click outside panna close aagum
-window.addEventListener('click', function(e) {
-  const widget = document.getElementById('wa-widget');
-  const popup = document.getElementById('wa-popup');
-  if (!widget.contains(e.target)) {
-    popup.classList.remove('active');
-    popup.classList.add('hidden');
-  }
-});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
