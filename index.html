@@ -29,11 +29,11 @@
 
     /* Text Clarity Enhancements */
     .hero-title-shadow {
-      text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 0px 30px rgba(255, 255, 255, 0.5);
+      text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.8), 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
 
     .hero-tagline-shadow {
-      text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+      text-shadow: 1px 2px 10px rgba(0, 0, 0, 0.9);
     }
 
     .header-glow-wrapper {
@@ -197,7 +197,7 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(255, 255, 255, 0.4); 
+      background: rgba(0, 0, 0, 0.55); 
       z-index: 0;
     }
   </style>
@@ -247,28 +247,25 @@
     <div class="hero-overlay"></div>
     
     <div class="max-w-5xl mx-auto text-center relative z-10 reveal">
-      <span class="inline-block px-5 py-2 mb-8 text-xs font-bold tracking-[0.2em] text-blue-600 uppercase bg-blue-50/80 rounded-full">Future-Proof Digital Excellence</span>
+      <span class="inline-block px-5 py-2 mb-8 text-xs font-bold tracking-[0.2em] text-white uppercase bg-blue-600 rounded-full shadow-lg">Future-Proof Digital Excellence</span>
       
-      <!-- Modified: added hero-title-shadow class -->
-      <h2 class="text-5xl md:text-8xl font-[900] leading-[1] text-slate-900 mb-8 tracking-tight hero-title-shadow">
-        Elevating Ideas Into <br/> Powerful Reality
+      <h2 class="text-5xl md:text-8xl font-[900] leading-[1] text-white mb-8 tracking-tight hero-title-shadow">
+        Elevating Ideas Into <br/><span class="gradient-text italic">Powerful Reality.</span>
       </h2>
       
       <div class="h-16 md:h-24 flex items-center justify-center">
-        <!-- Modified: added hero-tagline-shadow class -->
-        <p class="text-slate-800 text-xl md:text-2xl max-w-3xl leading-relaxed font-bold hero-tagline-shadow">
+        <p class="text-white text-xl md:text-2xl max-w-3xl leading-relaxed font-bold hero-tagline-shadow">
           <span id="typing-text"></span><span class="typing-cursor"></span>
         </p>
       </div>
 
       <div class="flex flex-wrap gap-6 justify-center mt-12">
-        <a href="#services" class="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-2xl hover:shadow-blue-500/30 btn-corporate">Explore Services</a>
-        <a href="#contact" class="px-10 py-5 bg-white text-slate-900 border-2 border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all">Contact Expert</a>
+        <a href="#services" class="px-10 py-5 bg-white text-slate-900 rounded-2xl font-bold hover:bg-blue-600 hover:text-white transition-all shadow-2xl hover:shadow-blue-500/30 btn-corporate">Explore Services</a>
+        <a href="#contact" class="px-10 py-5 bg-transparent text-white border-2 border-white rounded-2xl font-bold hover:bg-white/10 transition-all backdrop-blur-sm">Contact Expert</a>
       </div>
     </div>
   </section>
 
-  <!-- Rest of the sections remains unchanged -->
   <section id="services" class="py-32 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-24 reveal">
@@ -400,20 +397,20 @@
   </section>
 
   <section id="contact" class="py-32 px-6">
-    <div class="max-w-6xl mx-auto glass rounded-[4rem] p-12 md:p-24 shadow-2xl relative overflow-hidden">
+    <div class="max-w-6xl mx-auto bg-white border border-slate-100 rounded-[4rem] p-12 md:p-24 shadow-2xl relative overflow-hidden">
       <div class="relative z-10 grid md:grid-cols-2 gap-20 items-center">
         <div class="reveal">
           <h2 class="text-5xl font-black text-slate-900 mb-8 tracking-tighter">Ready to <span class="gradient-text">Wave?</span></h2>
           <p class="text-slate-500 text-lg mb-12 font-medium">Build your digital future with CodeWave Tech.</p>
           <div class="space-y-6">
-            <div class="flex items-center gap-6 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
+            <div class="flex items-center gap-6 p-6 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm">
               <span class="text-3xl">📧</span>
               <div>
                 <p class="text-xs font-bold text-slate-400 uppercase">Mail us at</p>
                 <p class="font-bold text-slate-800">codewavetech23@gmail.com</p>
               </div>
             </div>
-            <div class="flex items-center gap-6 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
+            <div class="flex items-center gap-6 p-6 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm">
                 <span class="text-3xl">💬</span>
                 <div>
                   <p class="text-xs font-bold text-slate-400 uppercase">WhatsApp Support</p>
@@ -437,7 +434,7 @@
         <h2 class="text-3xl font-black mb-4 tracking-tighter">Code<span class="text-blue-500">Wave</span> Tech</h2>
         <p class="text-slate-400 mb-10 max-w-lg mx-auto">Empowering digital evolution through high-performance software and expert academic support.</p>
         <div class="flex justify-center gap-6 mb-12">
-            <a href="https://www.instagram.com/codewave_tech_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/codewave_tech_" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-instagram"></i></a>
             <a href="https://linkedin.com/company/115134187/" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://www.youtube.com/@CODEWAVE_TECH" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-youtube"></i></a>
         </div>
@@ -454,8 +451,24 @@
     </div>
   </div>
 
-  <!-- Scripts remain exactly the same -->
+  <div id="fileViewModal" class="modal">
+    <div class="file-container">
+        <div class="file-header">
+            <h3 id="fileTitle" class="font-bold">File Viewer</h3>
+            <button onclick="closeFileView()" class="text-2xl">&times;</button>
+        </div>
+        <iframe id="fileFrame" class="flex-1 w-full border-none"></iframe>
+    </div>
+  </div>
+
+  <div id="imagePopupModal">
+      <button onclick="closeImagePopup()" class="absolute top-5 right-5 text-white text-4xl">&times;</button>
+      <img id="popupImage" src="" class="popup-content" alt="Preview">
+  </div>
+
+  <!-- Script Logic -->
   <script>
+    // Slideshow
     const slideshowContainer = document.getElementById('heroSlideshow');
     const totalImages = 15;
     const slides = [];
@@ -477,6 +490,7 @@
     }
     setInterval(nextSlide, 4000);
 
+    // Typing Effect
     const taglines = [
       "Turning Logic into Magic. ✨",
       "Your Ideas, Our Code, One Future.",
@@ -490,9 +504,6 @@
     let taglineIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    const typingDelay = 100;
-    const erasingDelay = 50;
-    const nextTaglineDelay = 2000;
     const textElement = document.getElementById("typing-text");
 
     function typeEffect() {
@@ -506,34 +517,32 @@
       }
       if (!isDeleting && charIndex === currentTagline.length) {
         isDeleting = true;
-        setTimeout(typeEffect, nextTaglineDelay);
+        setTimeout(typeEffect, 2000);
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         taglineIndex = (taglineIndex + 1) % taglines.length;
         setTimeout(typeEffect, 500);
       } else {
-        setTimeout(typeEffect, isDeleting ? erasingDelay : typingDelay);
+        setTimeout(typeEffect, isDeleting ? 50 : 100);
       }
     }
     document.addEventListener("DOMContentLoaded", typeEffect);
 
+    // Stars background
     const starsBox = document.getElementById('starsBox');
-    const starCount = 80;
-    for (let i = 0; i < starCount; i++) {
+    for (let i = 0; i < 80; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         const size = (Math.random() * 2 + 1) + 'px';
-        star.style.width = size;
-        star.style.height = size;
+        star.style.width = size; star.style.height = size;
         star.style.left = Math.random() * 100 + '%';
         star.style.top = Math.random() * 100 + '%';
-        const duration = (Math.random() * 2 + 1.5) + 's';
-        const delay = (Math.random() * 5) + 's';
-        star.style.setProperty('--duration', duration);
-        star.style.animationDelay = delay;
+        star.style.setProperty('--duration', (Math.random() * 2 + 1.5) + 's');
+        star.style.animationDelay = (Math.random() * 5) + 's';
         starsBox.appendChild(star);
     }
 
+    // Pricing & Modals
     const priceData = {
       web: { title: "Web Solutions", items: [{ name: "E-Commerce Website", price: "₹12,599" }, { name: "Business Website", price: "₹7,599" }, { name: "Frontend Website", price: "₹2,599" }] },
       academic: { title: "Academic Help", items: [{ name: "Final Year Project", price: "₹2,499" }, { name: "Mini Projects", price: "₹999" }, { name: "Documentations", price: "₹899" }, { name: "ATS Resume Creation", price: "₹29" }, { name: "PPT Creation", price: "₹249" }, { name: "Full Package (All Subjects)", price: "₹499" }, { name: "Notes Per Subject", price: "₹99" }] },
@@ -552,6 +561,7 @@
         const div = document.createElement('div');
         div.className = "flex justify-between items-center p-6 bg-slate-50 rounded-2xl hover:bg-blue-600 hover:text-white transition-all cursor-pointer group";
         div.innerHTML = `<span class="font-black">${item.name}</span><span class="font-black bg-white text-blue-600 px-4 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white">${item.price}</span>`;
+        
         if (isWorkSection) {
             if (category === 'academic') {
                 if (item.name === "PPT Creation") div.onclick = () => showFiles("PPT Projects", "ppt", 12, "academic");
@@ -563,12 +573,7 @@
                 else if (item.name === "PPT Creation") div.onclick = () => showFiles("PPT Projects", "ppt", 12, "design");
             } else if (category === 'cards') {
                 if (item.name === "Visiting Card Design") div.onclick = () => showFiles("Visiting Card Designs", "vis", 6, "cards");
-            } else if (category === 'eservices') {
-                if (item.name === "Online Application") div.onclick = () => openFileView("e1.pdf", "Online Application", "doc");
-                else if (item.name === "Digital E-Services") div.onclick = () => openFileView("cm1.pdf", "Digital E-Services", "doc");
             }
-        } else {
-            div.onclick = () => openEnquiryModal(item.name);
         }
         container.appendChild(div);
       });
@@ -579,47 +584,24 @@
       document.getElementById('modalTitle').innerText = title;
       const container = document.getElementById('priceListContainer');
       container.innerHTML = "";
-      let extension = ".jpeg";
-      if (prefix === "ppt") extension = ".pptx";
-      else if (prefix === "doc" || prefix === "r") extension = ".pdf";
       for (let i = 1; i <= count; i++) {
-        const fileName = `${prefix}${i}${extension}`;
         const div = document.createElement('div');
-        div.className = "flex justify-between items-center p-6 bg-slate-50 rounded-2xl hover:bg-blue-600 hover:text-white transition-all cursor-pointer group";
-        let icon = "🖼️";
-        let displayName = fileName;
-        if (prefix === "ppt") { icon = "📊"; displayName = `PPT ${i}`; }
-        else if (prefix === "doc") { icon = "📄"; displayName = `Documentation ${i}`; }
-        else if (prefix === "pos") { displayName = `Poster ${i}`; }
-        else if (prefix === "r") { icon = "👤"; displayName = `Resume ${i}`; }
-        else if (prefix === "vis") { displayName = `Visiting Card ${i}`; }
-        div.innerHTML = `<span class="font-black">${icon} ${displayName}</span><span class="font-black bg-white text-blue-600 px-4 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white">View</span>`;
-        div.onclick = () => { (prefix === "pos" || prefix === "logo" || prefix === "vis") ? openImagePopup(fileName) : openFileView(fileName, displayName, prefix); };
+        div.className = "p-4 bg-slate-100 rounded-xl mb-2 cursor-pointer hover:bg-blue-500 hover:text-white";
+        div.innerText = `${prefix} Project ${i}`;
+        div.onclick = () => openFileView(`${prefix}${i}.pdf`, `${prefix} Project ${i}`);
         container.appendChild(div);
       }
-      const backBtn = document.createElement('button');
-      backBtn.className = "w-full mt-6 py-4 bg-slate-900 text-white rounded-2xl font-bold";
-      backBtn.innerText = "Back to Options";
-      backBtn.onclick = () => openPriceModal(category, true);
-      container.appendChild(backBtn);
     }
 
-    function openFileView(url, title, type) {
+    function openFileView(url, title) {
         document.getElementById('fileTitle').innerText = title;
-        const baseUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-        const absoluteFileUrl = baseUrl + url;
-        let finalUrl = "";
-        if (type === "ppt") finalUrl = `https://docs.google.com/presentation/d/e/2PACX-1v/embed?url=${encodeURIComponent(absoluteFileUrl)}`;
-        else if (type === "doc" || type === "r") finalUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteFileUrl)}&embedded=true`;
-        else finalUrl = url;
-        document.getElementById('fileFrame').src = finalUrl;
+        document.getElementById('fileFrame').src = url;
         document.getElementById('fileViewModal').classList.add('active');
     }
 
     function closeFileView() { document.getElementById('fileViewModal').classList.remove('active'); document.getElementById('fileFrame').src = ""; }
-    function openImagePopup(src) { const modal = document.getElementById('imagePopupModal'); const img = document.getElementById('popupImage'); img.src = src; modal.classList.add('active'); }
+    function openImagePopup(src) { document.getElementById('popupImage').src = src; document.getElementById('imagePopupModal').classList.add('active'); }
     function closeImagePopup() { document.getElementById('imagePopupModal').classList.remove('active'); }
-    function openEnquiryModal(service) { closeModal('priceModal'); document.getElementById('enquiryModal').classList.add('active'); document.getElementById('serviceNameInput').value = service; }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
     const observer = new IntersectionObserver((entries) => {
