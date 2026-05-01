@@ -128,7 +128,6 @@
     .modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
     .modal.active { display: flex; animation: fadeIn 0.3s ease; }
 
-    /* File View Popup Styles */
     #fileViewModal { display: none; position: fixed; inset: 0; z-index: 400; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 20px; }
     #fileViewModal.active { display: flex; }
     .file-container { background: white; width: 90%; height: 90%; border-radius: 1.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column; }
@@ -485,8 +484,13 @@
                 if (item.name === "Poster & Banners") div.onclick = () => showFiles("Poster Designs", "pos", 13, "design");
                 else if (item.name === "Logo Designs") div.onclick = () => showFiles("Logo Designs", "logo", 1, "design"); 
             } else if (category === 'cards') {
-                // Modified for Visiting Cards in Work Section
                 if (item.name === "Visiting Card Design") div.onclick = () => showFiles("Visiting Card Designs", "vis", 6, "cards");
+            } else if (category === 'eservices') {
+                if (item.name === "Online Application") {
+                    div.onclick = () => openFileView("e1.pdf", "Online Application", "doc");
+                } else if (item.name === "Digital E-Services") {
+                    div.onclick = () => openFileView("cm1.pdf", "Digital E-Services", "doc");
+                }
             }
         } else {
             div.onclick = () => openEnquiryModal(item.name);
@@ -552,9 +556,13 @@
         document.getElementById('fileTitle').innerText = title;
         
         let finalUrl = url;
+        // Logic to handle PPT and PDF via Google Docs Viewer
         if (type === "ppt" || type === "doc" || type === "r") {
-            const absoluteUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1) + url;
-            finalUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteUrl)}&embedded=true`;
+            // Getting absolute URL for Google Docs Viewer
+            const currentPath = window.location.origin + window.location.pathname;
+            const baseUrl = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+            const absoluteFileUrl = baseUrl + url;
+            finalUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteFileUrl)}&embedded=true`;
         }
         
         document.getElementById('fileFrame').src = finalUrl;
