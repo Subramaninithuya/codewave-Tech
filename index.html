@@ -25,15 +25,7 @@
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
       animation: gradientFlow 4s linear infinite;
-    }
-
-    /* Text Clarity Enhancements */
-    .hero-title-shadow {
-      text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 0px 30px rgba(255, 255, 255, 0.5);
-    }
-
-    .hero-tagline-shadow {
-      text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+      text-shadow: 0px 2px 4px rgba(0,0,0,0.2); 
     }
 
     .header-glow-wrapper {
@@ -43,7 +35,8 @@
       width: 100%;
       z-index: 100;
       overflow: hidden;
-      background: #0a0f1d;
+      background: #0a0f1d; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
     .header-bg-overlay {
@@ -86,25 +79,17 @@
     }
 
     @keyframes enhancedTwinkle {
-      0%, 100% { 
-        opacity: 0.2; 
-        transform: scale(0.6); 
-        box-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
-      }
-      50% { 
-        opacity: 1; 
-        transform: scale(1.2); 
-        box-shadow: 0 0 8px rgba(255, 255, 255, 1);
-      }
+      0%, 100% { opacity: 0.2; transform: scale(0.6); box-shadow: 0 0 2px rgba(255, 255, 255, 0.4); }
+      50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px rgba(255, 255, 255, 1); }
     }
 
     .header-main { 
         background: transparent;
         width: 100%;
-        height: 5rem;
+        height: 5.5rem;
         display: flex;
         align-items: center;
-        padding: 0 2rem;
+        padding: 0 1.5rem;
     }
     
     @keyframes float {
@@ -113,7 +98,13 @@
     }
     .animate-float { animation: float 4s ease-in-out infinite; }
 
-    .nav-link { position: relative; transition: color 0.3s ease; color: #94a3b8; }
+    .nav-link { 
+      position: relative; 
+      transition: all 0.3s ease; 
+      color: #e2e8f0; 
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
+      font-weight: 700;
+    }
     .nav-link::after {
         content: '';
         position: absolute;
@@ -124,13 +115,14 @@
         background: #3b82f6;
         transition: all 0.3s ease;
         transform: translateX(-50%);
+        box-shadow: 0 0 8px #3b82f6;
     }
-    .nav-link:hover { color: white; }
+    .nav-link:hover { color: #ffffff; transform: translateY(-1px); }
     .nav-link:hover::after { width: 100%; }
 
     @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 0px rgba(37, 99, 235, 0); transform: scale(1); }
-      50% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.5); transform: scale(1.02); }
+      0%, 100% { box-shadow: 0 0 5px rgba(37, 99, 235, 0.4); transform: scale(1); }
+      50% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.8); transform: scale(1.05); }
     }
     .btn-pulse { animation: pulse-glow 3s infinite; }
 
@@ -149,14 +141,16 @@
     .modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
     .modal.active { display: flex; animation: fadeIn 0.3s ease; }
 
-    #fileViewModal { display: none; position: fixed; inset: 0; z-index: 400; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 20px; }
+    #fileViewModal { display: none; position: fixed; inset: 0; z-index: 400; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 10px; }
     #fileViewModal.active { display: flex; }
-    .file-container { background: white; width: 90%; height: 90%; border-radius: 1.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .file-container { background: white; width: 100%; height: 95%; border-radius: 1rem; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    @media (min-width: 768px) { .file-container { width: 90%; height: 90%; border-radius: 1.5rem; } }
     .file-header { padding: 15px 25px; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
 
     #imagePopupModal { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
     #imagePopupModal.active { display: flex; }
-    .popup-content { max-width: 90%; max-height: 90%; border-radius: 1rem; border: 4px solid white; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+    .popup-content { max-width: 95%; max-height: 90%; border-radius: 0.5rem; border: 2px solid white; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+    @media (min-width: 768px) { .popup-content { max-width: 90%; border-radius: 1rem; border: 4px solid white; } }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -177,7 +171,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: -2;
+      background: #0f172a;
     }
     
     .hero-slide {
@@ -190,15 +185,18 @@
       transition: opacity 1.5s ease-in-out;
     }
 
-    .hero-slide.active {
-      opacity: 1;
-    }
+    .hero-slide.active { opacity: 1; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.7); z-index: -1; }
+    .hero-content-text { color: white !important; }
+    .hero-subtext { color: #cbd5e1 !important; }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.4); 
-      z-index: 0;
+    /* Mobile Menu styles */
+    #mobile-menu {
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(100%);
+    }
+    #mobile-menu.active {
+      transform: translateX(0);
     }
   </style>
 </head>
@@ -214,119 +212,131 @@
     <header class="header-main">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <div class="flex items-center gap-3 group cursor-pointer">
-                <div class="p-2 bg-white rounded-2xl shadow-sm animate-float">
-                    <img src="finalogo.jpeg" class="w-8 h-8 object-contain" alt="CodeWave">
+                <div class="p-2 bg-white rounded-2xl shadow-lg animate-float">
+                    <img src="finalogo.jpeg" class="w-8 h-8 md:w-9 md:h-9 object-contain" alt="CodeWave">
                 </div>
-                <h1 class="text-xl font-extrabold tracking-tight text-white">Code<span class="gradient-text">Wave</span></h1>
+                <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-white drop-shadow-md">
+                  Code<span class="gradient-text">Wave</span>
+                </h1>
             </div>
 
-            <nav class="hidden md:flex items-center gap-8 font-bold text-sm">
+            <nav class="hidden md:flex items-center gap-8 font-bold text-[15px]">
                 <a href="#" class="nav-link">Home</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#works" class="nav-link">Our Works</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <div class="ml-2">
-                    <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-2xl text-sm hover:bg-blue-500 transition-all btn-corporate btn-pulse inline-block shadow-lg">
+                    <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-2xl text-sm font-bold hover:bg-blue-500 transition-all btn-corporate btn-pulse inline-block shadow-lg">
                         Get Started
                     </a>
                 </div>
             </nav>
             
-            <div class="md:hidden text-2xl text-white">
+            <button id="menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
                 <i class="fa-solid fa-bars-staggered"></i>
-            </div>
+            </button>
         </div>
     </header>
   </div>
 
-  <div class="h-20"></div>
+  <!-- Mobile Side Navigation -->
+  <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-slate-900 z-[150] shadow-2xl p-8 flex flex-col gap-6 md:hidden">
+      <button id="close-menu" class="self-end text-white text-3xl">&times;</button>
+      <a href="#" class="text-white font-bold text-lg border-b border-slate-800 pb-2">Home</a>
+      <a href="#services" class="text-white font-bold text-lg border-b border-slate-800 pb-2">Services</a>
+      <a href="#works" class="text-white font-bold text-lg border-b border-slate-800 pb-2">Our Works</a>
+      <a href="#about" class="text-white font-bold text-lg border-b border-slate-800 pb-2">About</a>
+      <a href="#contact" class="text-white font-bold text-lg border-b border-slate-800 pb-2">Contact</a>
+      <a href="#contact" class="bg-blue-600 text-center text-white py-3 rounded-xl font-bold mt-4">Get Started</a>
+  </div>
 
+  <div class="h-24"></div>
+
+  <!-- HERO SECTION -->
   <section class="min-h-screen flex items-center pt-10 pb-20 px-6 relative overflow-hidden">
     <div class="hero-slideshow-container" id="heroSlideshow"></div>
     <div class="hero-overlay"></div>
     
     <div class="max-w-5xl mx-auto text-center relative z-10 reveal">
-      <span class="inline-block px-5 py-2 mb-8 text-xs font-bold tracking-[0.2em] text-blue-600 uppercase bg-blue-50/80 rounded-full">Future-Proof Digital Excellence</span>
-      
-      <!-- Modified: added hero-title-shadow class -->
-      <h2 class="text-5xl md:text-8xl font-[900] leading-[1] text-slate-900 mb-8 tracking-tight hero-title-shadow">
-        Elevating Ideas Into <br/> Powerful Reality
+      <span class="inline-block px-5 py-2 mb-6 text-[10px] md:text-xs font-bold tracking-[0.2em] text-white uppercase bg-blue-600/30 rounded-full border border-blue-400/50">Future-Proof Digital Excellence</span>
+      <h2 class="text-4xl md:text-8xl font-[900] leading-[1.1] md:leading-[1] text-white mb-8 tracking-tight hero-content-text">
+        Elevating Ideas Into <br/>Powerful Reality.
       </h2>
       
-      <div class="h-16 md:h-24 flex items-center justify-center">
-        <!-- Modified: added hero-tagline-shadow class -->
-        <p class="text-slate-800 text-xl md:text-2xl max-w-3xl leading-relaxed font-bold hero-tagline-shadow">
+      <div class="h-20 md:h-24 flex items-center justify-center">
+        <p class="text-slate-200 text-lg md:text-2xl max-w-3xl leading-relaxed font-medium hero-subtext">
           <span id="typing-text"></span><span class="typing-cursor"></span>
         </p>
       </div>
 
-      <div class="flex flex-wrap gap-6 justify-center mt-12">
-        <a href="#services" class="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-2xl hover:shadow-blue-500/30 btn-corporate">Explore Services</a>
-        <a href="#contact" class="px-10 py-5 bg-white text-slate-900 border-2 border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all">Contact Expert</a>
+      <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center mt-12">
+        <a href="#services" class="px-10 py-5 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-500 transition-all shadow-2xl hover:shadow-blue-500/30 btn-corporate">Explore Services</a>
+        <a href="#contact" class="px-10 py-5 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-2xl font-bold hover:bg-white/20 transition-all">Contact Expert</a>
       </div>
     </div>
   </section>
 
-  <!-- Rest of the sections remains unchanged -->
-  <section id="services" class="py-32 px-6 bg-white">
+  <!-- SERVICES SECTION -->
+  <section id="services" class="py-20 md:py-32 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-24 reveal">
-        <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">Tailored Solutions</h2>
+      <div class="text-center mb-16 md:mb-24 reveal">
+        <h2 class="text-3xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">Tailored Solutions</h2>
         <p class="text-slate-500 font-medium">Precision engineering for your digital needs.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="reveal service-card rounded-[3rem] group">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <!-- Service Card 1 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
           <img src="web1.jpg" alt="Web Development" class="service-img">
-          <div class="p-10">
-            <h4 class="text-2xl font-black mb-4 text-slate-900">Web Systems</h4>
-            <p class="text-slate-500 mb-10 leading-relaxed">Scalable architecture for E-Commerce, Frontend, and Enterprise platforms.</p>
+          <div class="p-8 md:p-10">
+            <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Web Systems</h4>
+            <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Scalable architecture for E-Commerce, Frontend, and Enterprise platforms.</p>
             <button onclick="openPriceModal('web')" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all btn-corporate shadow-xl shadow-blue-500/10">View Options</button>
           </div>
         </div>
-
-        <div class="reveal service-card rounded-[3rem] group">
+        <!-- Service Card 2 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
           <img src="aca1.jpg" alt="Academic Support" class="service-img">
-          <div class="p-10">
-            <h4 class="text-2xl font-black mb-4 text-slate-900">Academic Support</h4>
-            <p class="text-slate-500 mb-10 leading-relaxed">Projects, Notes, and ATS Resume creation for career success.</p>
+          <div class="p-8 md:p-10">
+            <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Academic Support</h4>
+            <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Projects, Notes, and ATS Resume creation for career success.</p>
             <button onclick="openPriceModal('academic')" class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold hover:bg-emerald-700 transition-all btn-corporate shadow-xl shadow-emerald-500/10">View Options</button>
           </div>
         </div>
-
-        <div class="reveal service-card rounded-[3rem] group">
+        <!-- Service Card 3 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
           <img src="vb1.jpg" alt="Visual Branding" class="service-img">
-          <div class="p-10">
-            <h4 class="text-2xl font-black mb-4 text-slate-900">Visual Branding</h4>
-            <p class="text-slate-500 mb-10 leading-relaxed">Premium Logos, Corporate Identity, and Marketing Designs.</p>
+          <div class="p-8 md:p-10">
+            <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Visual Branding</h4>
+            <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Premium Logos, Corporate Identity, and Marketing Designs.</p>
             <button onclick="openPriceModal('design')" class="w-full py-4 bg-amber-500 text-white rounded-2xl font-bold hover:bg-amber-600 transition-all btn-corporate shadow-xl shadow-amber-500/10">View Options</button>
           </div>
         </div>
-        
-        <div class="reveal service-card rounded-[3rem] group">
+        <!-- Service Card 4 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
           <img src="ad1.jpg" alt="Ad Creation" class="service-img">
-          <div class="p-10">
-            <h4 class="text-2xl font-black mb-4 text-slate-900">Ad Creation</h4>
-            <p class="text-slate-500 mb-10 leading-relaxed">Professional Advertisement designs and management for your business growth.</p>
+          <div class="p-8 md:p-10">
+            <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Ad Creation</h4>
+            <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Professional Advertisement designs and management for your business growth.</p>
             <button onclick="openPriceModal('ads')" class="w-full py-4 bg-rose-600 text-white rounded-2xl font-bold hover:bg-rose-700 transition-all btn-corporate shadow-xl shadow-rose-500/10">View Options</button>
           </div>
         </div>
-
-        <div class="reveal service-card rounded-[3rem] group">
+        <!-- Service Card 5 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
           <img src="e1.jpg" alt="E-Services" class="service-img">
-          <div class="p-10">
-            <h4 class="text-2xl font-black mb-4 text-slate-900">E-Services</h4>
-            <p class="text-slate-500 mb-10 leading-relaxed">Fast processing for Online Applications and essential Digital E-Services.</p>
+          <div class="p-8 md:p-10">
+            <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">E-Services</h4>
+            <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Fast processing for Online Applications and essential Digital E-Services.</p>
             <button onclick="openPriceModal('eservices')" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all btn-corporate shadow-xl shadow-indigo-500/10">View Options</button>
           </div>
         </div>
-
-        <div class="reveal service-card rounded-[3rem] group">
+        <!-- Service Card 6 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
           <img src="vc.jpg" alt="Visiting Cards" class="service-img">
-          <div class="p-10">
-            <h4 class="text-2xl font-black mb-4 text-slate-900">Visiting Cards</h4>
-            <p class="text-slate-500 mb-10 leading-relaxed">Corporate Visiting Card designs and professional identity branding.</p>
+          <div class="p-8 md:p-10">
+            <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Visiting Cards</h4>
+            <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Corporate Visiting Card designs and professional identity branding.</p>
             <button onclick="openPriceModal('cards')" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all btn-corporate shadow-xl shadow-blue-500/10">View Options</button>
           </div>
         </div>
@@ -334,64 +344,66 @@
     </div>
   </section>
 
-  <section id="works" class="py-32 px-6 bg-slate-50">
+  <!-- WORKS SECTION -->
+  <section id="works" class="py-20 md:py-32 px-6 bg-slate-50">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-24 reveal">
-        <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">Our Works</h2>
+      <div class="text-center mb-16 md:mb-24 reveal">
+        <h2 class="text-3xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">Our Works</h2>
         <p class="text-slate-500 font-medium">Browse through our service catalog and price details.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="reveal service-card rounded-[3rem] group">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <!-- Work 1 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
           <img src="web2.jpg" alt="Web Development Work" class="service-img">
-          <div class="p-10">
-            <h4 class="text-2xl font-black mb-4 text-slate-900">Web Systems</h4>
-            <p class="text-slate-500 mb-10 leading-relaxed">Scalable architecture for E-Commerce, Frontend, and Enterprise platforms.</p>
+          <div class="p-8 md:p-10">
+            <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Web Systems</h4>
+            <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Scalable architecture for E-Commerce, Platforms.</p>
             <button onclick="openPriceModal('web', true)" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all btn-corporate shadow-xl shadow-blue-500/10">View More</button>
           </div>
         </div>
-
-        <div class="reveal service-card rounded-[3rem] group">
+        <!-- Work 2 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
           <img src="aca2.jpg" alt="Academic Support Work" class="service-img">
-          <div class="p-10">
-            <h4 class="text-2xl font-black mb-4 text-slate-900">Academic Support</h4>
-            <p class="text-slate-500 mb-10 leading-relaxed">Projects, Notes, and ATS Resume creation for career success.</p>
+          <div class="p-8 md:p-10">
+            <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Academic Support</h4>
+            <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Projects, Notes, and ATS Resume creation.</p>
             <button onclick="openPriceModal('academic', true)" class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold hover:bg-emerald-700 transition-all btn-corporate shadow-xl shadow-emerald-500/10">View More</button>
           </div>
         </div>
-
-        <div class="reveal service-card rounded-[3rem] group">
+        <!-- Work 3 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
           <img src="vb2.jpg" alt="Visual Branding Work" class="service-img">
-          <div class="p-10">
-            <h4 class="text-2xl font-black mb-4 text-slate-900">Visual Branding</h4>
-            <p class="text-slate-500 mb-10 leading-relaxed">Premium Logos, Corporate Identity, and Marketing Designs.</p>
+          <div class="p-8 md:p-10">
+            <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Visual Branding</h4>
+            <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Premium Logos, Corporate Identity.</p>
             <button onclick="openPriceModal('design', true)" class="w-full py-4 bg-amber-500 text-white rounded-2xl font-bold hover:bg-amber-600 transition-all btn-corporate shadow-xl shadow-amber-500/10">View More</button>
           </div>
         </div>
-        
-        <div class="reveal service-card rounded-[3rem] group">
+        <!-- Work 4 -->
+        <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
             <img src="ad2.jpg" alt="Ad Creation Work" class="service-img">
-            <div class="p-10">
-              <h4 class="text-2xl font-black mb-4 text-slate-900">Ad Creation</h4>
-              <p class="text-slate-500 mb-10 leading-relaxed">Professional Advertisement designs and management for your business growth.</p>
+            <div class="p-8 md:p-10">
+              <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Ad Creation</h4>
+              <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Professional Advertisement designs.</p>
               <button onclick="openPriceModal('ads', true)" class="w-full py-4 bg-rose-600 text-white rounded-2xl font-bold hover:bg-rose-700 transition-all btn-corporate shadow-xl shadow-rose-500/10">View More</button>
             </div>
           </div>
-  
-          <div class="reveal service-card rounded-[3rem] group">
+        <!-- Work 5 -->
+          <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
             <img src="e2.jpg" alt="E-Services Work" class="service-img">
-            <div class="p-10">
-              <h4 class="text-2xl font-black mb-4 text-slate-900">E-Services</h4>
-              <p class="text-slate-500 mb-10 leading-relaxed">Fast processing for Online Applications and essential Digital E-Services.</p>
+            <div class="p-8 md:p-10">
+              <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">E-Services</h4>
+              <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Fast processing for Online Applications.</p>
               <button onclick="openPriceModal('eservices', true)" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all btn-corporate shadow-xl shadow-indigo-500/10">View More</button>
             </div>
           </div>
-  
-          <div class="reveal service-card rounded-[3rem] group">
+        <!-- Work 6 -->
+          <div class="reveal service-card rounded-[2rem] md:rounded-[3rem] group">
             <img src="vc2.jpg" alt="Visiting Cards Work" class="service-img">
-            <div class="p-10">
-              <h4 class="text-2xl font-black mb-4 text-slate-900">Visiting Cards</h4>
-              <p class="text-slate-500 mb-10 leading-relaxed">Corporate Visiting Card designs and professional identity branding.</p>
+            <div class="p-8 md:p-10">
+              <h4 class="text-xl md:text-2xl font-black mb-4 text-slate-900">Visiting Cards</h4>
+              <p class="text-slate-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">Corporate Visiting Card designs.</p>
               <button onclick="openPriceModal('cards', true)" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all btn-corporate shadow-xl shadow-blue-500/10">View More</button>
             </div>
           </div>
@@ -399,63 +411,106 @@
     </div>
   </section>
 
-  <section id="contact" class="py-32 px-6">
-    <div class="max-w-6xl mx-auto glass rounded-[4rem] p-12 md:p-24 shadow-2xl relative overflow-hidden">
-      <div class="relative z-10 grid md:grid-cols-2 gap-20 items-center">
-        <div class="reveal">
-          <h2 class="text-5xl font-black text-slate-900 mb-8 tracking-tighter">Ready to <span class="gradient-text">Wave?</span></h2>
-          <p class="text-slate-500 text-lg mb-12 font-medium">Build your digital future with CodeWave Tech.</p>
-          <div class="space-y-6">
-            <div class="flex items-center gap-6 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-20 md:py-32 px-6">
+    <div class="max-w-6xl mx-auto bg-slate-50 rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-24 shadow-2xl relative overflow-hidden">
+      <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div class="reveal text-center md:text-left">
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 md:mb-8 tracking-tighter">Ready to <span class="gradient-text">Wave?</span></h2>
+          <p class="text-slate-500 text-lg mb-10 md:mb-12 font-medium">Build your digital future with CodeWave Tech.</p>
+          <div class="space-y-4 md:space-y-6">
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
               <span class="text-3xl">📧</span>
-              <div>
+              <div class="text-center md:text-left">
                 <p class="text-xs font-bold text-slate-400 uppercase">Mail us at</p>
-                <p class="font-bold text-slate-800">codewavetech23@gmail.com</p>
+                <p class="font-bold text-slate-800 break-all">codewavetech23@gmail.com</p>
               </div>
             </div>
-            <div class="flex items-center gap-6 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
                 <span class="text-3xl">💬</span>
-                <div>
+                <div class="text-center md:text-left">
                   <p class="text-xs font-bold text-slate-400 uppercase">WhatsApp Support</p>
                   <p class="font-bold text-slate-800">+91 93426 05824</p>
                 </div>
               </div>
           </div>
         </div>
-        <div class="bg-slate-900 p-12 rounded-[3rem] text-white reveal shadow-2xl">
-          <h3 class="text-2xl font-bold mb-4">Instant Chat</h3>
-          <p class="text-slate-400 mb-10 text-sm">Start your journey with us on WhatsApp.</p>
+        <div class="bg-slate-900 p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] text-white reveal shadow-2xl">
+          <h3 class="text-xl md:text-2xl font-bold mb-4">Instant Chat</h3>
+          <p class="text-slate-400 mb-8 md:mb-10 text-sm">Start your journey with us on WhatsApp.</p>
           <a href="https://wa.me/919342605824" class="block w-full py-5 bg-blue-600 text-white rounded-2xl font-black text-center hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20">Chat Now</a>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-slate-900 text-white py-20 px-6">
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white py-16 md:py-20 px-6">
     <div class="max-w-7xl mx-auto text-center">
-        <img src="finalogo.jpeg" class="w-16 h-16 mx-auto mb-6 rounded-2xl" alt="Logo">
-        <h2 class="text-3xl font-black mb-4 tracking-tighter">Code<span class="text-blue-500">Wave</span> Tech</h2>
-        <p class="text-slate-400 mb-10 max-w-lg mx-auto">Empowering digital evolution through high-performance software and expert academic support.</p>
+        <img src="finalogo.jpeg" class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-6 rounded-2xl" alt="Logo">
+        <h2 class="text-2xl md:text-3xl font-black mb-4 tracking-tighter">Code<span class="text-blue-500">Wave</span> Tech</h2>
+        <p class="text-slate-400 mb-10 max-w-lg mx-auto text-sm md:text-base">Empowering digital evolution through high-performance software and expert academic support.</p>
         <div class="flex justify-center gap-6 mb-12">
-            <a href="https://www.instagram.com/codewave_tech_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com/company/115134187/" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.youtube.com/@CODEWAVE_TECH" target="_blank" class="text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/codewave_tech_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-xl md:text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com/company/115134187/" target="_blank" class="text-xl md:text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@CODEWAVE_TECH" target="_blank" class="text-xl md:text-2xl hover:text-blue-500 transition-colors"><i class="fab fa-youtube"></i></a>
         </div>
-        <p class="text-slate-600 text-sm font-bold tracking-widest uppercase">© 2026 CodeWave Tech. Precision Engineering.</p>
+        <p class="text-slate-600 text-[10px] md:text-sm font-bold tracking-widest uppercase">© 2026 CodeWave Tech. Precision Engineering.</p>
     </div>
   </footer>
 
   <!-- MODALS -->
   <div id="priceModal" class="modal px-4">
-    <div class="bg-white w-full max-w-xl rounded-[3rem] p-12 shadow-2xl relative max-h-[85vh] overflow-y-auto">
-      <button onclick="closeModal('priceModal')" class="absolute top-10 right-10 text-3xl text-slate-300 hover:text-slate-900">&times;</button>
-      <h3 id="modalTitle" class="text-3xl font-black mb-10 text-slate-900 text-center italic">Service Pricing</h3>
+    <div class="bg-white w-full max-w-xl rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 shadow-2xl relative max-h-[85vh] overflow-y-auto">
+      <button onclick="closeModal('priceModal')" class="absolute top-6 right-6 md:top-10 md:right-10 text-3xl text-slate-300 hover:text-slate-900">&times;</button>
+      <h3 id="modalTitle" class="text-2xl md:text-3xl font-black mb-8 md:mb-10 text-slate-900 text-center italic">Service Pricing</h3>
       <div id="priceListContainer" class="space-y-4"></div>
     </div>
   </div>
 
-  <!-- Scripts remain exactly the same -->
+  <div id="fileViewModal">
+    <div class="file-container">
+        <div class="file-header">
+            <h4 id="fileTitle" class="font-bold text-slate-800 text-sm md:text-base">File Viewer</h4>
+            <button onclick="closeFileView()" class="text-xl md:text-2xl font-bold text-slate-500 hover:text-red-500">Back</button>
+        </div>
+        <iframe id="fileFrame" class="w-full h-full border-none"></iframe>
+    </div>
+  </div>
+
+  <div id="imagePopupModal" onclick="closeImagePopup()">
+    <img id="popupImage" src="" class="popup-content" onclick="event.stopPropagation()">
+  </div>
+
+  <div id="enquiryModal" class="modal px-4">
+    <div class="bg-white w-full max-w-lg rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal('enquiryModal')" class="absolute top-6 right-6 md:top-10 md:right-10 text-3xl text-slate-300 hover:text-slate-900">&times;</button>
+      <h3 class="text-xl md:text-2xl font-black mb-8">Order Specification</h3>
+      <form id="orderForm" class="space-y-4">
+        <input type="hidden" id="serviceNameInput" name="service_name">
+        <input type="text" placeholder="Full Name" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm md:text-base">
+        <input type="email" placeholder="Email" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm md:text-base">
+        <input type="tel" placeholder="WhatsApp Number" required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm md:text-base">
+        <textarea rows="4" placeholder="Briefly describe your requirements..." required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm md:text-base"></textarea>
+        <button type="submit" class="w-full py-5 bg-slate-900 text-white rounded-2xl font-black hover:bg-blue-600 shadow-xl transition-all">Submit Order</button>
+      </form>
+    </div>
+  </div>
+
   <script>
+    // --- MOBILE MENU LOGIC ---
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuLinks = mobileMenu.querySelectorAll('a');
+
+    menuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
+    closeBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+    });
+
+    // --- HERO SLIDESHOW LOGIC ---
     const slideshowContainer = document.getElementById('heroSlideshow');
     const totalImages = 15;
     const slides = [];
@@ -471,12 +526,15 @@
 
     let currentSlide = 0;
     function nextSlide() {
+      if (slides.length === 0) return;
       slides[currentSlide].classList.remove('active');
       currentSlide = (currentSlide + 1) % slides.length;
       slides[currentSlide].classList.add('active');
     }
+
     setInterval(nextSlide, 4000);
 
+    // --- TYPING ANIMATION LOGIC ---
     const taglines = [
       "Turning Logic into Magic. ✨",
       "Your Ideas, Our Code, One Future.",
@@ -497,6 +555,7 @@
 
     function typeEffect() {
       const currentTagline = taglines[taglineIndex];
+      
       if (isDeleting) {
         textElement.textContent = currentTagline.substring(0, charIndex - 1);
         charIndex--;
@@ -504,6 +563,7 @@
         textElement.textContent = currentTagline.substring(0, charIndex + 1);
         charIndex++;
       }
+
       if (!isDeleting && charIndex === currentTagline.length) {
         isDeleting = true;
         setTimeout(typeEffect, nextTaglineDelay);
@@ -515,10 +575,12 @@
         setTimeout(typeEffect, isDeleting ? erasingDelay : typingDelay);
       }
     }
+
     document.addEventListener("DOMContentLoaded", typeEffect);
 
+    // Stars Generator
     const starsBox = document.getElementById('starsBox');
-    const starCount = 80;
+    const starCount = 50; // Reduced for mobile performance
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         star.className = 'star';
@@ -548,19 +610,21 @@
       document.getElementById('modalTitle').innerText = data.title;
       const container = document.getElementById('priceListContainer');
       container.innerHTML = "";
+      
       data.items.forEach(item => {
         const div = document.createElement('div');
-        div.className = "flex justify-between items-center p-6 bg-slate-50 rounded-2xl hover:bg-blue-600 hover:text-white transition-all cursor-pointer group";
-        div.innerHTML = `<span class="font-black">${item.name}</span><span class="font-black bg-white text-blue-600 px-4 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white">${item.price}</span>`;
+        div.className = "flex flex-col md:flex-row justify-between items-start md:items-center p-5 md:p-6 bg-slate-50 rounded-2xl hover:bg-blue-600 hover:text-white transition-all cursor-pointer group gap-2";
+        div.innerHTML = `<span class="font-black text-sm md:text-base">${item.name}</span><span class="font-black bg-white text-blue-600 px-4 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white text-xs md:text-sm">${item.price}</span>`;
+        
         if (isWorkSection) {
             if (category === 'academic') {
-                if (item.name === "PPT Creation") div.onclick = () => showFiles("PPT Projects", "ppt", 12, "academic");
-                else if (item.name === "Documentations") div.onclick = () => showFiles("Documentation Projects", "doc", 5, "academic");
-                else if (item.name === "ATS Resume Creation") div.onclick = () => showFiles("ATS Resumes", "r", 5, "academic");
+                if (item.name === "PPT Creation") div.onclick = () => showFiles("Project Presentation", "ppt", 12, "academic");
+                else if (item.name === "Documentations") div.onclick = () => showFiles("Project Documentation", "doc", 5, "academic");
+                else if (item.name === "ATS Resume Creation") div.onclick = () => showFiles("Resume", "r", 5, "academic");
             } else if (category === 'design') {
                 if (item.name === "Poster & Banners") div.onclick = () => showFiles("Poster Designs", "pos", 13, "design");
                 else if (item.name === "Logo Designs") div.onclick = () => showFiles("Logo Designs", "logo", 1, "design"); 
-                else if (item.name === "PPT Creation") div.onclick = () => showFiles("PPT Projects", "ppt", 12, "design");
+                else if (item.name === "PPT Creation") div.onclick = () => showFiles("Project Presentation", "ppt", 12, "design");
             } else if (category === 'cards') {
                 if (item.name === "Visiting Card Design") div.onclick = () => showFiles("Visiting Card Designs", "vis", 6, "cards");
             } else if (category === 'eservices') {
@@ -575,6 +639,15 @@
       document.getElementById('priceModal').classList.add('active');
     }
 
+    function downloadFile(url) {
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = url.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
     function showFiles(title, prefix, count, category) {
       document.getElementById('modalTitle').innerText = title;
       const container = document.getElementById('priceListContainer');
@@ -582,19 +655,26 @@
       let extension = ".jpeg";
       if (prefix === "ppt") extension = ".pptx";
       else if (prefix === "doc" || prefix === "r") extension = ".pdf";
+      
       for (let i = 1; i <= count; i++) {
         const fileName = `${prefix}${i}${extension}`;
+        
+        let displayName = fileName;
+        if (prefix === "doc") displayName = "Project Documentation";
+        else if (prefix === "r") displayName = "Resume";
+        else if (prefix === "ppt") displayName = "Project Presentation";
+
         const div = document.createElement('div');
         div.className = "flex justify-between items-center p-6 bg-slate-50 rounded-2xl hover:bg-blue-600 hover:text-white transition-all cursor-pointer group";
-        let icon = "🖼️";
-        let displayName = fileName;
-        if (prefix === "ppt") { icon = "📊"; displayName = `PPT ${i}`; }
-        else if (prefix === "doc") { icon = "📄"; displayName = `Documentation ${i}`; }
-        else if (prefix === "pos") { displayName = `Poster ${i}`; }
-        else if (prefix === "r") { icon = "👤"; displayName = `Resume ${i}`; }
-        else if (prefix === "vis") { displayName = `Visiting Card ${i}`; }
-        div.innerHTML = `<span class="font-black">${icon} ${displayName}</span><span class="font-black bg-white text-blue-600 px-4 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white">View</span>`;
-        div.onclick = () => { (prefix === "pos" || prefix === "logo" || prefix === "vis") ? openImagePopup(fileName) : openFileView(fileName, displayName, prefix); };
+        
+        let actionText = (prefix === "ppt") ? "Download" : "View";
+        div.innerHTML = `<span class="font-black text-sm md:text-base">${displayName}</span><span class="font-black bg-white text-blue-600 px-4 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white text-xs md:text-sm">${actionText}</span>`;
+        
+        div.onclick = () => { 
+          if(prefix === "ppt") { downloadFile(fileName); } 
+          else if(prefix === "pos" || prefix === "logo" || prefix === "vis") { openImagePopup(fileName); } 
+          else { openFileView(fileName, displayName, prefix); }
+        };
         container.appendChild(div);
       }
       const backBtn = document.createElement('button');
@@ -608,16 +688,13 @@
         document.getElementById('fileTitle').innerText = title;
         const baseUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
         const absoluteFileUrl = baseUrl + url;
-        let finalUrl = "";
-        if (type === "ppt") finalUrl = `https://docs.google.com/presentation/d/e/2PACX-1v/embed?url=${encodeURIComponent(absoluteFileUrl)}`;
-        else if (type === "doc" || type === "r") finalUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteFileUrl)}&embedded=true`;
-        else finalUrl = url;
+        let finalUrl = type === "ppt" ? `https://docs.google.com/presentation/d/e/2PACX-1v/embed?url=${encodeURIComponent(absoluteFileUrl)}` : `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteFileUrl)}&embedded=true`;
         document.getElementById('fileFrame').src = finalUrl;
         document.getElementById('fileViewModal').classList.add('active');
     }
 
     function closeFileView() { document.getElementById('fileViewModal').classList.remove('active'); document.getElementById('fileFrame').src = ""; }
-    function openImagePopup(src) { const modal = document.getElementById('imagePopupModal'); const img = document.getElementById('popupImage'); img.src = src; modal.classList.add('active'); }
+    function openImagePopup(src) { const modal = document.getElementById('imagePopupModal'); document.getElementById('popupImage').src = src; modal.classList.add('active'); }
     function closeImagePopup() { document.getElementById('imagePopupModal').classList.remove('active'); }
     function openEnquiryModal(service) { closeModal('priceModal'); document.getElementById('enquiryModal').classList.add('active'); document.getElementById('serviceNameInput').value = service; }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
