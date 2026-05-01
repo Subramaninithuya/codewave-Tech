@@ -20,69 +20,85 @@
     }
 
     .gradient-text { 
-      background: linear-gradient(90deg, #1e40af, #7c3aed, #2563eb, #1e40af);
+      background: linear-gradient(90deg, #3b82f6, #a855f7, #60a5fa, #3b82f6);
       background-size: 300% 100%;
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
       animation: gradientFlow 4s linear infinite;
     }
 
+    /* Full Screen Dark Header with Enhanced Animated Background */
     .header-glow-wrapper {
       position: fixed;
-      top: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 95%;
+      top: 0;
+      left: 0;
+      width: 100%;
       z-index: 100;
-      padding: 2.5px;
-      border-radius: 1.5rem;
       overflow: hidden;
-      background: #e2e8f0; 
+      background: #0a0f1d; /* Richer Dark */
     }
 
-    .header-glow-wrapper::before {
-      content: '';
+    .header-bg-overlay {
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-      animation: flowLeftToRight 2s linear infinite;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
     }
 
-    .header-glow-wrapper::after {
-      content: '';
+    /* Circuit Background */
+    .circuit-lines {
       position: absolute;
-      top: 0;
-      right: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(270deg, transparent, #7c3aed, transparent);
-      animation: flowRightToLeft 2s linear infinite;
-      animation-delay: 1s;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background-image: 
+        linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      transform: perspective(500px) rotateX(60deg);
+      animation: circuitMove 30s linear infinite;
     }
 
-    @keyframes flowLeftToRight {
-      0% { left: -100%; }
-      50% { left: 100%; }
-      100% { left: 100%; }
+    @keyframes circuitMove {
+      from { transform: perspective(500px) rotateX(60deg) translateY(0); }
+      to { transform: perspective(500px) rotateX(60deg) translateY(60px); }
     }
 
-    @keyframes flowRightToLeft {
-      0% { right: -100%; }
-      50% { right: 100%; }
-      100% { right: 100%; }
+    /* Enhanced Star Twinkle Animation */
+    .stars-container {
+      position: absolute;
+      inset: 0;
     }
 
-    .glass { 
-        background: #f8fafc;
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+      animation: enhancedTwinkle var(--duration) infinite ease-in-out;
+    }
+
+    @keyframes enhancedTwinkle {
+      0%, 100% { 
+        opacity: 0.2; 
+        transform: scale(0.6); 
+        box-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+      }
+      50% { 
+        opacity: 1; 
+        transform: scale(1.2); 
+        box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+      }
+    }
+
+    .header-main { 
+        background: transparent;
         width: 100%;
-        height: 100%;
-        border-radius: 1.4rem;
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
     }
     
     @keyframes float {
@@ -91,7 +107,7 @@
     }
     .animate-float { animation: float 4s ease-in-out infinite; }
 
-    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link { position: relative; transition: color 0.3s ease; color: #94a3b8; }
     .nav-link::after {
         content: '';
         position: absolute;
@@ -99,15 +115,16 @@
         height: 2px;
         bottom: -4px;
         left: 50%;
-        background: #2563eb;
+        background: #3b82f6;
         transition: all 0.3s ease;
         transform: translateX(-50%);
     }
+    .nav-link:hover { color: white; }
     .nav-link:hover::after { width: 100%; }
 
     @keyframes pulse-glow {
       0%, 100% { box-shadow: 0 0 0px rgba(37, 99, 235, 0); transform: scale(1); }
-      50% { box-shadow: 0 0 25px rgba(37, 99, 235, 0.4); transform: scale(1.02); }
+      50% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.5); transform: scale(1.02); }
     }
     .btn-pulse { animation: pulse-glow 3s infinite; }
 
@@ -144,36 +161,43 @@
 <body class="text-slate-900 antialiased">
   
   <div class="header-glow-wrapper">
-    <header class="glass px-6 md:px-10 h-20 flex items-center">
+    <div class="header-bg-overlay">
+        <div class="circuit-lines"></div>
+        <div class="stars-container" id="starsBox"></div>
+    </div>
+
+    <header class="header-main">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <div class="flex items-center gap-3 group cursor-pointer">
-                <div class="p-2 bg-white rounded-2xl shadow-sm border border-slate-100 animate-float">
+                <div class="p-2 bg-white rounded-2xl shadow-sm animate-float">
                     <img src="finalogo.jpeg" class="w-8 h-8 object-contain" alt="CodeWave">
                 </div>
-                <h1 class="text-xl font-extrabold tracking-tight text-slate-900">Code<span class="gradient-text">Wave</span></h1>
+                <h1 class="text-xl font-extrabold tracking-tight text-white">Code<span class="gradient-text">Wave</span></h1>
             </div>
 
-            <nav class="hidden md:flex items-center gap-8 font-bold text-sm text-slate-600">
-                <a href="#" class="nav-link hover:text-blue-600">Home</a>
-                <a href="#services" class="nav-link hover:text-blue-600">Services</a>
-                <a href="#works" class="nav-link hover:text-blue-600">Our Works</a>
-                <a href="#about" class="nav-link hover:text-blue-600">About</a>
-                <a href="#contact" class="nav-link hover:text-blue-600">Contact</a>
+            <nav class="hidden md:flex items-center gap-8 font-bold text-sm">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#works" class="nav-link">Our Works</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
                 <div class="ml-2">
-                    <a href="#contact" class="bg-slate-900 text-white px-8 py-3 rounded-2xl text-sm hover:bg-blue-600 transition-all btn-corporate btn-pulse inline-block shadow-lg">
+                    <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-2xl text-sm hover:bg-blue-500 transition-all btn-corporate btn-pulse inline-block shadow-lg">
                         Get Started
                     </a>
                 </div>
             </nav>
             
-            <div class="md:hidden text-2xl text-slate-900">
+            <div class="md:hidden text-2xl text-white">
                 <i class="fa-solid fa-bars-staggered"></i>
             </div>
         </div>
     </header>
   </div>
 
-  <section class="min-h-screen flex items-center pt-32 pb-20 px-6 relative overflow-hidden bg-white">
+  <div class="h-20"></div>
+
+  <section class="min-h-screen flex items-center pt-10 pb-20 px-6 relative overflow-hidden bg-white">
     <div class="wave-bg">
       <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-50 rounded-full blur-[120px]"></div>
       <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-purple-50 rounded-full blur-[100px]"></div>
@@ -383,7 +407,6 @@
     </div>
   </div>
 
-  <!-- New File Viewer Modal -->
   <div id="fileViewModal">
     <div class="file-container">
         <div class="file-header">
@@ -414,6 +437,32 @@
   </div>
 
   <script>
+    // Enhanced Stars Generator Logic
+    const starsBox = document.getElementById('starsBox');
+    const starCount = 80; // Increased star count
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // Varying sizes for depth
+        const size = (Math.random() * 2 + 1) + 'px';
+        star.style.width = size;
+        star.style.height = size;
+        
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        
+        // Varying durations and delays for natural effect
+        const duration = (Math.random() * 2 + 1.5) + 's';
+        const delay = (Math.random() * 5) + 's';
+        
+        star.style.setProperty('--duration', duration);
+        star.style.animationDelay = delay;
+        
+        starsBox.appendChild(star);
+    }
+
     const priceData = {
       web: { 
         title: "Web Solutions", 
@@ -555,18 +604,13 @@
 
     function openFileView(url, title, type) {
         document.getElementById('fileTitle').innerText = title;
-        
         const baseUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
         const absoluteFileUrl = baseUrl + url;
         let finalUrl = "";
 
-        // PPT-க்கு மட்டும் Google Slides Viewer பயன்படுத்தப்படுகிறது
         if (type === "ppt") {
             finalUrl = `https://docs.google.com/presentation/d/e/2PACX-1v/embed?url=${encodeURIComponent(absoluteFileUrl)}`;
-            // மாற்று வழி (ஒருவேளை embed வேலை செய்யவில்லை எனில்):
-            // finalUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteFileUrl)}&embedded=true`;
         } 
-        // மற்ற ஆவணங்களுக்கு சாதாரண Google Docs Viewer
         else if (type === "doc" || type === "r") {
             finalUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteFileUrl)}&embedded=true`;
         } else {
